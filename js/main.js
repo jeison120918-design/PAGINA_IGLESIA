@@ -1,5 +1,7 @@
 /* ===========================================================
-   IGLESIA JESUCRISTO ES MI AMIGO FIEL — JavaScript v6
+   IGLESIA JESUCRISTO ES MI AMIGO FIEL — JavaScript v6.1
+   (v12 UI: el header ahora recibe la clase .scrolled al bajar,
+   para el efecto vidrio reforzado del nuevo diseño)
    SOLUCIÓN DEFINITIVA ERROR 153 YOUTUBE
    - Facade Lite pattern (patrón oficial web.dev)
    - Detección de origen (file://, http, https)
@@ -532,21 +534,27 @@
       spySections.forEach(function(s) { spy.observe(s.sec); });
     }
 
-    /* ===== Header shadow on scroll ===== */
+    /* ===== Header shadow on scroll (v12: clase .scrolled) ===== */
     var header = document.getElementById('header');
     if (header) {
       var headerTicking = false;
+      var updateHeader = function() {
+        var scrolled = window.pageYOffset > 30;
+        header.classList.toggle('scrolled', scrolled);
+        header.style.boxShadow = scrolled
+          ? '0 8px 30px rgba(4,22,61,.14)'
+          : '0 2px 12px rgba(11,61,145,.08)';
+      };
       window.addEventListener('scroll', function() {
         if (!headerTicking) {
           window.requestAnimationFrame(function() {
-            header.style.boxShadow = window.pageYOffset > 30
-              ? '0 4px 20px rgba(0,0,0,.1)'
-              : '0 2px 12px rgba(0,0,0,.06)';
+            updateHeader();
             headerTicking = false;
           });
           headerTicking = true;
         }
       }, { passive: true });
+      updateHeader();
     }
 
     /* ===== Formulario de contacto ===== */
