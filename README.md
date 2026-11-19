@@ -2,7 +2,30 @@
 
 **Pastores:** Profeta Javier Belliard · Pastora Marnie Belliard
 **Ubicación:** Av. Estrella Sadhalá #14, Santiago de los Caballeros, RD
-**Versión:** 10.0 — Auditoría completa, corrección de errores y optimización de diseño, espaciado y widgets
+**Versión:** 11.0 — Corrección de legibilidad, enlaces y contenido desactualizado
+
+---
+
+## 🆕 NOVEDADES — Versión 11.0 (19 de noviembre de 2026)
+
+### Errores corregidos
+1. ✅ **Etiquetas de estado ilegibles en las tarjetas de los pastores** — las etiquetas "perfil oficial del Pastor", "público" y "perfil oficial" usaban texto azul oscuro (#0b3d91) sobre fondo azul oscuro (contraste 1.34:1, prácticamente invisible). Ahora en las tarjetas oscuras usan azul cielo (#bfdbfe) sobre azul translúcido (contraste 9.44:1).
+2. ✅ **Nota de Instagram poco legible** — el texto pequeño sobre el degradado de Instagram tenía contraste 3.21:1. Ahora va con fondo azul oscuro translúcido y opacidad .95.
+3. ✅ **Imagen Open Graph con URL relativa** — `og:image` y `twitter:image` usaban rutas relativas, por lo que al compartir el enlace en redes no se mostraba la imagen. Ahora usan la URL absoluta de GitHub Pages (`https://jeison120918-design.github.io/PAGINA_IGLESIA/`) y se añadió `og:url`.
+4. ✅ **Evento "INFLUENCIA" desactualizado** — la sección decía "Próximo Gran Evento" pero el evento fue el 10 y 11 de octubre de 2026 (ya pasó). Ahora dice "Evento destacado" con la nota "Evento realizado el 10 y 11 de octubre de 2026" y el botón lleva a ver las fotos del evento.
+5. ✅ **Puntos del carrusel de oraciones ocultos a lectores de pantalla** — los puntos son clicables pero el contenedor tenía `aria-hidden="true"`. Ahora tiene `role="group"` y etiqueta accesible.
+6. ✅ **Pestañas sin relación accesible con sus paneles** — los botones de YouTube/Facebook/Instagram ahora tienen `id` y cada panel su `aria-labelledby`.
+
+### Mejoras de diseño y organización
+- ➕ **Alternancia de secciones restaurada** — "Oraciones" y "Servicios" tenían el mismo fondo suave seguidas; Servicios vuelve a fondo blanco para separar mejor los bloques.
+- ➕ **Nota del hero más legible** — opacidad .70 → .82 y tamaño 12 → 12.5 px.
+
+### Verificado (19 nov 2026)
+- Estructura HTML válida, sin etiquetas sin cerrar, sin IDs duplicados y sin anclas rotas.
+- Todas las imágenes y archivos locales existen; las 13 miniaturas de YouTube responden 200.
+- Canales de YouTube, Instagram, TikTok, X, Threads, WhatsApp, Cash App y el enlace de Google Maps responden 200. Facebook y PayPal devuelven 400/403 a peticiones automáticas por protección anti-bots, pero los enlaces son los oficiales y funcionan en el navegador.
+- El feed RSS de YouTube funciona vía rss2json; el respaldo `api.allorigins.win` no respondió desde la red de verificación (el sitio sigue mostrando las tarjetas estáticas si el feed falla).
+- Sitio publicado en GitHub Pages: https://jeison120918-design.github.io/PAGINA_IGLESIA/
 
 ---
 
