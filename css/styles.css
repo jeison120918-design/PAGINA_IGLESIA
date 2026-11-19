@@ -1940,3 +1940,128 @@ img{
   .event-date-box{ height:148px; }
   .yt-main-player{ height:0; padding-bottom:56.25%; }
 }
+
+/* ============================================================
+   v13 — ACTUALIZACIÓN EN VIVO
+   Banner de transmisión, filtros de videos, insignias de
+   Short y En Vivo, fecha de cada video, marca de última
+   actualización y fotos destacadas. Paleta azul y blanco.
+   ============================================================ */
+
+/* [hidden] siempre oculta (el banner en vivo nace oculto) */
+[hidden]{ display:none !important; }
+
+/* Marca de última actualización */
+.live-updated{
+  margin:18px auto 0; font-size:13px; color:var(--gray);
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  line-height:1.5; max-width:720px;
+}
+.live-updated i{ color:#16a34a; }
+.live-updated .fa-spin{ color:var(--primary); }
+
+/* Banner de transmisión en vivo */
+.live-banner{
+  display:flex; align-items:center; gap:16px;
+  max-width:860px; margin:0 auto 30px; padding:16px 22px;
+  border-radius:var(--radius);
+  background:linear-gradient(135deg, #dc2626, #991b1b);
+  color:#fff; box-shadow:0 14px 34px rgba(220,38,38,.35);
+  border:1px solid rgba(255,255,255,.25);
+}
+.live-banner-dot{
+  flex-shrink:0; width:12px; height:12px; border-radius:50%;
+  background:#fff; box-shadow:0 0 0 0 rgba(255,255,255,.7);
+  animation:ls-pulse 1.6s infinite;
+}
+.live-banner-body{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.live-banner-body strong{ font-size:15px; letter-spacing:.06em; }
+.live-banner-body span{ font-size:13.5px; opacity:.94; line-height:1.45; }
+.live-banner-btn{ flex-shrink:0; }
+
+/* Filtros de videos de YouTube */
+.yt-filters{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+  margin:0 auto 26px;
+}
+.yt-filter-btn{
+  font-family:'Inter',sans-serif; font-size:13.5px; font-weight:600;
+  padding:9px 18px; border-radius:999px; cursor:pointer;
+  color:var(--primary); background:var(--mist);
+  border:1px solid var(--line); transition:all .25s ease;
+  display:inline-flex; align-items:center; gap:7px;
+}
+.yt-filter-btn:hover{ border-color:rgba(59,130,246,.5); transform:translateY(-1px); }
+.yt-filter-btn.active{
+  background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color:#fff; border-color:transparent;
+  box-shadow:0 8px 20px rgba(11,61,145,.28);
+}
+.yt-filter-dot{
+  width:8px; height:8px; border-radius:50%; background:#dc2626;
+  box-shadow:0 0 0 0 rgba(220,38,38,.6);
+  animation:ls-pulse 1.6s infinite;
+}
+
+/* Insignias sobre la miniatura */
+.yt-badge{
+  position:absolute; top:10px; left:10px; z-index:2;
+  font-size:11px; font-weight:800; letter-spacing:.05em;
+  padding:5px 10px; border-radius:999px; color:#fff;
+  display:inline-flex; align-items:center; gap:6px;
+  box-shadow:0 4px 12px rgba(4,22,61,.35);
+}
+.yt-badge--short{ background:rgba(4,22,61,.85); }
+.yt-badge--live{ background:#dc2626; }
+.yt-badge-dot{
+  width:7px; height:7px; border-radius:50%; background:#fff;
+  box-shadow:0 0 0 0 rgba(255,255,255,.7);
+  animation:ls-pulse 1.6s infinite;
+}
+
+/* Fecha de cada video */
+.yt-date{
+  margin:-6px 17px 14px; font-size:12px; color:var(--gray);
+  display:flex; align-items:center; gap:6px;
+}
+.yt-date i{ color:var(--azure); }
+
+/* Mensaje cuando un filtro no tiene videos */
+.yt-empty{
+  grid-column:1 / -1; text-align:center; color:var(--gray);
+  padding:28px 16px; font-size:14px;
+}
+
+/* Botón EN VIVO con transmisión activa */
+.yt-ch-btn.is-live{
+  background:linear-gradient(135deg, #dc2626, #991b1b);
+  box-shadow:0 10px 26px rgba(220,38,38,.4);
+  animation:live-glow 2s infinite;
+}
+.yt-ch-btn.is-live:hover{ box-shadow:0 14px 32px rgba(220,38,38,.55); }
+@keyframes live-glow{
+  0%,100%{ box-shadow:0 10px 26px rgba(220,38,38,.4); }
+  50%{ box-shadow:0 10px 34px rgba(220,38,38,.65); }
+}
+
+/* Insignia de foto destacada en la galería */
+.featured-badge{
+  position:absolute; top:12px; right:12px; z-index:3;
+  background:linear-gradient(135deg, var(--azure), var(--primary));
+  color:#fff; font-size:11.5px; font-weight:800; letter-spacing:.04em;
+  padding:6px 11px; border-radius:999px;
+  display:inline-flex; align-items:center; gap:6px;
+  box-shadow:0 6px 16px rgba(11,61,145,.4);
+}
+.featured-badge i{ color:#fde68a; font-size:11px; }
+.prayer-slide--featured .prayer-caption{ background:linear-gradient(180deg, transparent, rgba(11,61,145,.85)); }
+
+/* Contadores actualizados en vivo: punto verde junto a la nota */
+body.stats-live .live-updated i{ color:#16a34a; }
+
+@media (max-width:640px){
+  .live-banner{ flex-direction:column; text-align:center; padding:18px; }
+  .live-banner-body{ align-items:center; }
+  .yt-filters{ gap:8px; }
+  .yt-filter-btn{ padding:8px 14px; font-size:12.5px; }
+}
