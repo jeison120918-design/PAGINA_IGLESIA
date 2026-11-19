@@ -22,13 +22,14 @@
 <meta property="og:description" content="Tu peor tiempo se convertirá en tu mejor tiempo. Únete a nosotros en Santiago, RD." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="es_DO" />
-<meta property="og:image" content="assets/og-image.jpg" />
+<meta property="og:url" content="https://jeison120918-design.github.io/PAGINA_IGLESIA/" />
+<meta property="og:image" content="https://jeison120918-design.github.io/PAGINA_IGLESIA/assets/og-image.jpg" />
 <meta property="og:image:width" content="1376" />
 <meta property="og:image:height" content="768" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Iglesia Jesucristo es Mi Amigo Fiel" />
 <meta name="twitter:description" content="Tu peor tiempo se convertirá en tu mejor tiempo." />
-<meta name="twitter:image" content="assets/og-image.jpg" />
+<meta name="twitter:image" content="https://jeison120918-design.github.io/PAGINA_IGLESIA/assets/og-image.jpg" />
 
 <title>Iglesia Jesucristo es Mi Amigo Fiel | Pastores Javier y Marnie Belliard</title>
 
@@ -397,13 +398,13 @@
         </div>
       </div>
     </div>
-    <div class="prayer-dots" id="prayerDots" aria-hidden="true"></div>
+    <div class="prayer-dots" id="prayerDots" role="group" aria-label="Elegir foto de la galería de oraciones"></div>
     <p class="prayer-note"><i class="fas fa-camera" aria-hidden="true"></i> Fotografías reales de los pastores y su familia de ministerio, tomadas de las publicaciones oficiales en Facebook e Instagram.</p>
   </div>
 </section>
 
 <!-- ============ SERVICIOS / HORARIOS ============ -->
-<section class="section section-soft" id="servicios">
+<section class="section" id="servicios">
   <div class="container">
     <div class="section-head" data-aos="fade-up">
       <span class="eyebrow">Horarios de Servicios</span>
@@ -463,9 +464,9 @@
 <section class="section section-dark" id="eventos">
   <div class="container">
     <div class="section-head" data-aos="fade-up">
-      <span class="eyebrow gold">Próximo Gran Evento</span>
+      <span class="eyebrow gold">Evento destacado</span>
       <h2 class="section-title light">Influencia <span class="gold">en la Gran Arena</span></h2>
-      <p class="section-lead light">Un encuentro profético que marcará tu vida. Dos noches gloriosas en la Gran Arena del Cibao.</p>
+      <p class="section-lead light">Un encuentro profético que marcó vidas. Dos noches gloriosas en la Gran Arena del Cibao.</p>
     </div>
 
     <div class="featured-event" data-aos="zoom-in">
@@ -479,6 +480,7 @@
           <h3 class="event-title">INFLUENCIA — Profetas &amp; Pastores</h3>
           <p class="event-place"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gran Arena del Cibao, Santiago RD</p>
           <p class="event-free"><i class="fas fa-ticket-alt" aria-hidden="true"></i> ENTRADA TOTALMENTE GRATIS</p>
+          <p class="event-past"><i class="fas fa-circle-check" aria-hidden="true"></i> Evento realizado el 10 y 11 de octubre de 2026. ¡Gracias a todos los que asistieron!</p>
 
           <div class="event-speakers">
             <span class="speaker-title">Predican:</span>
@@ -492,7 +494,7 @@
             </ul>
           </div>
 
-          <a href="https://www.facebook.com/profetajavieroficial/" target="_blank" rel="noopener noreferrer" class="btn btn-gold"><i class="fas fa-calendar-plus" aria-hidden="true"></i> Más Información</a>
+          <a href="https://www.facebook.com/profetajavieroficial/" target="_blank" rel="noopener noreferrer" class="btn btn-gold"><i class="fas fa-images" aria-hidden="true"></i> Ver fotos del evento</a>
         </div>
       </div>
     </div>
@@ -511,13 +513,13 @@
 
     <!-- Tabs -->
     <div class="tabs" role="tablist" data-aos="fade-up">
-      <button class="tab-btn active" data-tab="yt" role="tab" aria-selected="true" aria-controls="tab-yt"><i class="fab fa-youtube" aria-hidden="true"></i> YouTube</button>
-      <button class="tab-btn" data-tab="fb" role="tab" aria-selected="false" aria-controls="tab-fb"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</button>
-      <button class="tab-btn" data-tab="ig" role="tab" aria-selected="false" aria-controls="tab-ig"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</button>
+      <button class="tab-btn active" id="tabbtn-yt" data-tab="yt" role="tab" aria-selected="true" aria-controls="tab-yt"><i class="fab fa-youtube" aria-hidden="true"></i> YouTube</button>
+      <button class="tab-btn" id="tabbtn-fb" data-tab="fb" role="tab" aria-selected="false" aria-controls="tab-fb"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</button>
+      <button class="tab-btn" id="tabbtn-ig" data-tab="ig" role="tab" aria-selected="false" aria-controls="tab-ig"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</button>
     </div>
 
     <!-- ===== YouTube ===== -->
-    <div class="tab-content active" id="tab-yt" role="tabpanel">
+    <div class="tab-content active" id="tab-yt" role="tabpanel" aria-labelledby="tabbtn-yt">
 
       <!-- Video destacado -->
       <div class="yt-featured" data-aos="fade-up">
@@ -618,7 +620,7 @@
     </div>
 
     <!-- ===== Facebook ===== -->
-    <div class="tab-content" id="tab-fb" role="tabpanel">
+    <div class="tab-content" id="tab-fb" role="tabpanel" aria-labelledby="tabbtn-fb">
       <p class="tab-info"><i class="fas fa-circle-check" aria-hidden="true"></i> Publicaciones recientes de nuestras páginas oficiales — se actualizan automáticamente.</p>
       <div class="fb-grid">
         <div class="fb-iframe-card">
@@ -664,7 +666,7 @@
     </div>
 
     <!-- ===== Instagram ===== -->
-    <div class="tab-content" id="tab-ig" role="tabpanel">
+    <div class="tab-content" id="tab-ig" role="tabpanel" aria-labelledby="tabbtn-ig">
       <p class="tab-info"><i class="fas fa-circle-check" aria-hidden="true"></i> Feed de Instagram del Pastor Javier Belliard.</p>
       <div class="ig-cta">
         <div class="ig-card-big">
