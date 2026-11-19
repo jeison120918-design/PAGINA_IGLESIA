@@ -2,7 +2,42 @@
 
 **Pastores:** Profeta Javier Belliard · Pastora Marnie Belliard
 **Ubicación:** Av. Estrella Sadhalá #14, Santiago de los Caballeros, RD
-**Versión:** 11.0 — Corrección de legibilidad, enlaces y contenido desactualizado
+**Versión:** 13.0 — Actualización en vivo: contadores de YouTube, videos/shorts/en vivo, fotos destacadas y mejoras de desempeño
+
+---
+
+## 🆕 NOVEDADES — Versión 13.0 "En Vivo" (19 de noviembre de 2026)
+
+### Actualización en tiempo real (sin claves ni credenciales)
+1. ✅ **Suscriptores y videos de YouTube en vivo** — los contadores de los dos canales (@Profetajavierbelliard y @profetaMarnieBelliard) se actualizan solos cada 15 minutos desde la API pública de SocialCounts (sin clave). Verificado el 19 nov 2026: Javier ~250K suscriptores y 1.540 videos; Marnie 871 suscriptores y 13 videos. Si la red falla, quedan los valores de referencia y se reintenta en el próximo ciclo.
+2. ✅ **Videos, Shorts y transmisiones en vivo clasificados** — el feed RSS oficial de YouTube ya distinguía los Shorts por la URL (`/shorts/VIDEO_ID`). Ahora cada tarjeta lleva su insignia (Short / EN VIVO) y su fecha relativa ("hace 2 h", "hace 3 días"), y hay filtros Todos / Videos / Shorts / En vivo sobre la cuadrícula.
+3. ✅ **Banner "EN VIVO AHORA"** — cuando hay una transmisión activa en el canal del Pastor Javier, aparece un banner rojo con el título y el botón para verla, y el reproductor destacado pasa a la transmisión. La detección lee la página `/live` de YouTube; si no hay transmisión, no aparece nada (no se inventa).
+4. ✅ **Reproductor destacado más inteligente** — ya no toma el primer video del feed (que muchas veces es un Short vertical): prefiere una transmisión en vivo si la hay, si no el video normal más reciente.
+5. ✅ **Fotos destacadas desde JSON** — la galería de oraciones lee `assets/galeria/destacadas.json` y pone esas fotos primero en el carrusel con la insignia ★ Destacada. Para añadir una foto nueva: sube el archivo a `assets/galeria/` y agrega una entrada en ese JSON (ruta, texto e icono). Si el archivo no existe o falla, la galería queda en su orden estático.
+6. ✅ **Marca de "Última actualización"** — en la sección de Contenido se muestra la hora de la última actualización en vivo. Si algo falló, lo dice con honestidad ("mostrando la última información guardada").
+7. ✅ **Caché local** — los últimos datos (feed y contadores) se guardan en el navegador 15 minutos: la página muestra al instante lo guardado y luego refresca en segundo plano, sin recargar.
+
+### Lo que NO se puede actualizar en vivo (con honestidad)
+- **Instagram, TikTok y Facebook no tienen ningún endpoint público fiable sin autenticación** para leer contadores de seguidores (Instagram exige inicio de sesión; TikTok y Facebook exigen sus APIs oficiales con credenciales). Se probaron vías públicas el 19 nov 2026 (Instagram `__a=1` devuelve vacío; TikTok vía proxy devuelve error 500) y no funcionan. Esas cifras siguen siendo valores estáticos de referencia en `SOCIAL_STATS` y se actualizan manualmente. Para tenerlas en vivo haría falta conectar la API oficial de Meta (Instagram/Facebook) y la API de TikTok con las credenciales de las cuentas.
+- **Fotos nuevas de las redes** tampoco se pueden traer automáticamente sin esas APIs: por eso las destacadas se alimentan con el JSON local (punto 5). No se inventan fotos ni cifras de alcance.
+
+### Mejoras de desempeño
+- ➕ **Preconnect/dns-prefetch** a `api.rss2json.com`, `api.socialcounts.org` y `api.allorigins.win` (las tres fuentes en vivo), además de las que ya existían.
+- ➕ **Decodificación asíncrona de imágenes** (`decoding="async"` en todas las `<img>`) para no bloquear el primer pintado.
+- ➕ **Caché local de 15 minutos** (punto 7): menos peticiones repetidas y carga instantánea en visitas seguidas.
+- ➕ Las miniaturas de YouTube ya eran `loading="lazy"`; el reproductor principal sigue siendo `eager` como debe ser.
+
+### Verificado (19 nov 2026)
+- Estructura HTML válida, sin etiquetas sin cerrar, sin IDs duplicados y sin anclas rotas.
+- `node --check` correcto en `js/main.js`; CSS con llaves y paréntesis balanceados.
+- Feed RSS vía rss2json trae datos reales (último item: Short del 19 nov 2026, 17:10 UTC); SocialCounts responde con los contadores reales de ambos canales; la página `/live` responde 200 y no marca transmisión activa (correcto: no hay una ahora).
+- Sitio publicado en GitHub Pages: https://jeison120918-design.github.io/PAGINA_IGLESIA/
+
+---
+
+## 🆕 NOVEDADES — Versión 12.0 "Aurora" (19 de noviembre de 2026)
+
+Rediseño total de la interfaz: nuevo sistema de diseño azul y blanco, hero a pantalla completa con tarjetas de vidrio, header de vidrio con desenfoque, botones con barrido de brillo, secciones, tarjetas de pastores, servicios, donaciones, contacto y footer rediseñados, mismo contenido y datos. Verificado sin errores y subido a main.
 
 ---
 
@@ -66,7 +101,8 @@ jemaf-website/
 │   ├── favicon.svg            # Icono del sitio (paleta azul)
 │   ├── apple-touch-icon.png   # Icono iOS (180×180, generado del favicon)
 │   ├── og-image.jpg           # Imagen para compartir en redes
-│   ├── galeria/               # Fotos del cuadro de oraciones (oracion-01..06.jpg)
+│   ├── galeria/               # Fotos del cuadro de oraciones (oracion-01..07.jpg)
+│   │   └── destacadas.json    # Fotos destacadas: orden e insignia ★ (v13)
 │   └── pastores/
 │       ├── javier/            # Carrusel del Pastor (01..05.jpg)
 │       └── marnie/            # Carrusel de la Pastora (01..05.jpg)
@@ -156,12 +192,22 @@ Reemplaza los archivos de los carruseles:
 
 ---
 
-## 🔄 YouTube auto-update
+## 🔄 YouTube auto-update (en vivo, v13)
 
-El feed RSS del canal `@Profetajavierbelliard` se lee cada 15 minutos (pausado cuando la pestaña no está visible). Sin API key. Para cambiar el canal edita `js/main.js`:
+El feed RSS del canal `@Profetajavierbelliard` se lee cada 15 minutos (pausado cuando la pestaña no está visible) y al volver a la pestaña. Sin API key. Los contadores de suscriptores y videos de ambos canales se actualizan en vivo desde SocialCounts; el banner de transmisión en vivo se comprueba en cada ciclo. Todo con caché local de 15 minutos y respaldo a los datos estáticos si la red falla.
+
+Para cambiar el canal edita `js/main.js`:
 ```js
 var CHANNEL_ID = 'UCrrGRL_XdPleFjWNAa0-Dhg';
 ```
+
+## 📷 Fotos destacadas (v13)
+
+La galería de oraciones lee `assets/galeria/destacadas.json`. Para destacar una foto nueva:
+
+1. Sube la foto a `assets/galeria/` (horizontal 16:9 recomendado).
+2. Agrega una entrada en `destacadas.json` con `src`, `caption`, `alt` e `icon` (nombre de icono de Font Awesome, por ejemplo `fa-heart`).
+3. Las destacadas aparecen primero en el carrusel con la insignia ★ Destacada; el resto de la galería sigue en su orden normal.
 
 ---
 
