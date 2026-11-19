@@ -1,7 +1,11 @@
 /* ===========================================================
-   IGLESIA JESUCRISTO ES MI AMIGO FIEL — JavaScript v6.1
+   IGLESIA JESUCRISTO ES MI AMIGO FIEL — JavaScript v7.0
    (v12 UI: el header ahora recibe la clase .scrolled al bajar,
    para el efecto vidrio reforzado del nuevo diseño)
+   (v13 EN VIVO: contadores de YouTube en vivo, feed clasificado
+   en videos/shorts/en vivo con filtros, banner de transmisión
+   en vivo, fotos destacadas desde JSON y marca de última
+   actualización, con caché local y respaldo a datos estáticos)
    SOLUCIÓN DEFINITIVA ERROR 153 YOUTUBE
    - Facade Lite pattern (patrón oficial web.dev)
    - Detección de origen (file://, http, https)
@@ -36,13 +40,21 @@
      (hero, tarjetas de pastores, botones, barra de YouTube)
      se rellenan automáticamente desde este objeto.
 
-     Última verificación en vivo: 25 de agosto de 2026.
-     - Facebook (Pastor Javier): verificado directamente en la
-       página oficial de Facebook (2.4 millones de seguidores).
-     - YouTube (Pastor Javier): 249K suscriptores y 1.5K videos
-       (verificado en el canal @Profetajavierbelliard).
-     - TikTok e Instagram: cifras públicas más recientes
-       reflejadas en la sección "Redes con mayor alcance" del sitio.
+     YOUTUBE EN VIVO (v13): los suscriptores y el total de
+     videos de los dos canales se actualizan en vivo desde la
+     API pública de SocialCounts (sin clave), cada 15 minutos
+     y al volver a la pestaña. Si la red falla, se conservan
+     estos valores de referencia y se reintenta en el próximo
+     ciclo. Última verificación manual de referencia:
+     19 de noviembre de 2026 (Javier: ~250K suscriptores,
+     1.540 videos; Marnie: 871 suscriptores, 13 videos).
+
+     INSTAGRAM / TIKTOK / FACEBOOK: no existe ningún endpoint
+     público fiable sin autenticación para leer sus contadores
+     (Instagram exige inicio de sesión; TikTok y Facebook
+     exigen sus APIs oficiales con credenciales). Esos números
+     siguen siendo valores estáticos de referencia y se
+     actualizan manualmente aquí. No se inventan cifras.
 
      PARA ACTUALIZAR: cambia el número "count" abajo. El sitio
      entero (hero + tarjetas + botones) se actualiza solo, sin
@@ -52,14 +64,14 @@
     pastorJavier: {
       tiktok:    { count: 373000,  label: 'TikTok' },
       facebook:  { count: 2400000, label: 'Facebook' },
-      youtube:   { count: 249000,  label: 'YouTube' },
-      ytVideos:  { count: 1500,    label: 'Videos YouTube' },
+      youtube:   { count: 250000,  label: 'YouTube' },
+      ytVideos:  { count: 1540,    label: 'Videos YouTube' },
       instagram: { count: null,    label: 'Instagram' },
       igSiguiendo: { count: 23,    label: 'Seguidos Instagram' }
     },
     pastoraMarnie: {
       facebook:  { count: 7585, label: 'Facebook' },
-      youtube:   { count: 1114, label: 'YouTube' },
+      youtube:   { count: 871, label: 'YouTube' },
       instagram: { count: 1214, label: 'Instagram' }
     },
     iglesia: {
@@ -123,6 +135,16 @@
   ready(function() {
 
     renderSocialStats();
+
+    /* ===== Rendimiento: decodificación asíncrona de imágenes =====
+       Las imágenes se decodifican fuera del hilo principal para no
+       bloquear el primer pintado. Las que ya traen loading="lazy"
+       en el HTML se mantienen diferidas. */
+    try {
+      document.querySelectorAll('img').forEach(function(img) {
+        if (!img.getAttribute('decoding')) img.setAttribute('decoding', 'async');
+      });
+    } catch (_) {}
 
 
     /* ===== AOS Animations ===== */
@@ -651,10 +673,99 @@
       return items;
     }
 
+    // Clasifica un item del feed: 'live' | 'short' | 'video'.
+    // El RSS oficial de YouTube distingue los Shorts por la URL
+    // (/shorts/VIDEO_ID) y las transmisiones por el título.
+    function classifyFeedItem(item) {
+      var link = item.link || item.guid || '';
+      var title = item.title || '';
+      if (/\/shorts\//i.test(link)) return 'short';
+      if (/en\s+vivo/i.test(title) || /live/i.test(title)) return 'live';
+      return 'video';
+    }
+
+    // Fecha relativa en español: "hace 2 h", "hace 3 días", "19 nov 2026"
+    function relativeDate(pubDate) {
+      if (!pubDate) return '';
+      var d = new Date(pubDate);
+      if (isNaN(d.getTime())) return '';
+      var diff = Date.now() - d.getTime();
+      var mins = Math.floor(diff / 60000);
+      if (mins < 1) return 'ahora mismo';
+      if (mins < 60) return 'hace ' + mins + ' min';
+      var hours = Math.floor(mins / 60);
+      if (hours < 24) return 'hace ' + hours + ' h';
+      var days = Math.floor(hours / 24);
+      if (days < 7) return 'hace ' + days + (days === 1 ? ' día' : ' días');
+      try {
+        return d.toLocaleDateString('es-DO', { day: 'numeric', month: 'short', year: 'numeric' });
+      } catch (_) { return ''; }
+    }
+
+    function feedItemTitle(item) {
+      return (item.title || '').replace(/#\S+/g, '').trim() || 'Predicación';
+    }
+
+    function buildFeedCard(item, kind) {
+      var v = extractVid(item.link || item.guid);
+      if (!v) return '';
+      var t = feedItemTitle(item);
+      var href = kind === 'short'
+        ? 'https://www.youtube.com/shorts/' + v
+        : 'https://www.youtube.com/watch?v=' + v;
+      var badge = '';
+      if (kind === 'short') badge = '<span class="yt-badge yt-badge--short">Short</span>';
+      if (kind === 'live') badge = '<span class="yt-badge yt-badge--live"><span class="yt-badge-dot" aria-hidden="true"></span>EN VIVO</span>';
+      var date = relativeDate(item.pubDate || item.published);
+      return '<a href="' + href + '" target="_blank" rel="noopener noreferrer" class="yt-card-video" data-vid="' + v + '" data-kind="' + kind + '">' +
+        '<div class="yt-thumb">' +
+        '<img src="https://i.ytimg.com/vi/' + v + '/hqdefault.jpg" alt="' + escapeHtml(t) +
+        '" loading="lazy" decoding="async" width="480" height="360"/>' + badge +
+        '<span class="yt-play" aria-hidden="true"><i class="fas fa-play"></i></span>' +
+        '</div>' +
+        '<h4>' + escapeHtml(truncate(t, 80)) + '</h4>' +
+        (date ? '<p class="yt-date"><i class="far fa-clock" aria-hidden="true"></i> ' + escapeHtml(date) + '</p>' : '') +
+        '</a>';
+    }
+
+    // Filtros Todos / Videos / Shorts / En vivo (también valen para
+    // las tarjetas estáticas de respaldo, que llevan data-kind).
+    var currentYtFilter = 'all';
+    function applyYtFilter(filter) {
+      currentYtFilter = filter;
+      if (!ytGrid) return;
+      ytGrid.querySelectorAll('.yt-card-video').forEach(function(card) {
+        var kind = card.getAttribute('data-kind') || 'video';
+        card.style.display = (filter === 'all' || kind === filter) ? '' : 'none';
+      });
+      document.querySelectorAll('.yt-filter-btn').forEach(function(b) {
+        var active = b.getAttribute('data-filter') === filter;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      var visible = ytGrid.querySelectorAll('.yt-card-video:not([style*="none"])').length;
+      var empty = document.getElementById('ytEmpty');
+      if (empty) empty.hidden = visible > 0;
+    }
+
+    document.querySelectorAll('.yt-filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        applyYtFilter(btn.getAttribute('data-filter'));
+      });
+    });
+
     function applyFeedItems(items) {
       if (!items || !items.length) return;
-      var first = items[0];
-      var vid = extractVid(first.link || first.guid);
+      var classified = items.map(function(it) {
+        return { item: it, kind: classifyFeedItem(it) };
+      });
+
+      // Destacado: primero una transmisión en vivo si la hay, si no
+      // el video normal más reciente (nunca un Short vertical).
+      var featured = classified.filter(function(c) { return c.kind === 'live'; })[0] ||
+                    classified.filter(function(c) { return c.kind === 'video'; })[0] ||
+                    classified[0];
+      var vid = extractVid(featured.item.link || featured.item.guid);
       if (vid && ytPlayerWrap) {
         var currentVid = currentPlayerVid();
         // Sólo recargamos si el video destacado cambió
@@ -663,44 +774,284 @@
           replaceIframeWithNew(vid, { attempt: 1, useNocookie: preferNocookie, autoplay: false });
         }
       }
-      if (ytMainTitle && first.title) ytMainTitle.textContent = first.title;
+      if (ytMainTitle) ytMainTitle.textContent = feedItemTitle(featured.item);
 
       if (ytGrid) {
-        ytGrid.innerHTML = items.map(function(it) {
-          var v = extractVid(it.link || it.guid);
-          if (!v) return '';
-          var t = (it.title || '').replace(/#\S+/g, '').trim() || 'Predicación';
-          return '<a href="https://www.youtube.com/watch?v=' + v +
-            '" target="_blank" rel="noopener noreferrer" class="yt-card-video" data-vid="' + v + '">' +
-            '<div class="yt-thumb">' +
-            '<img src="https://i.ytimg.com/vi/' + v + '/hqdefault.jpg" alt="' + escapeHtml(t) +
-            '" loading="lazy" width="480" height="360"/>' +
-            '<span class="yt-play" aria-hidden="true"><i class="fas fa-play"></i></span>' +
-            '</div>' +
-            '<h4>' + escapeHtml(truncate(t, 80)) + '</h4>' +
-            '</a>';
-        }).join('');
+        ytGrid.innerHTML = classified.map(function(c) {
+          return buildFeedCard(c.item, c.kind);
+        }).join('') +
+        '<p class="yt-empty" id="ytEmpty" hidden>No hay videos en esta categoría por ahora.</p>';
+        applyYtFilter(currentYtFilter);
       }
     }
 
-    function updateYouTubeFeed() {
-      if (!('fetch' in window)) return;
-      fetchFeed(CHANNEL_ID)
-        .then(function(items) { applyFeedItems(items.slice(0, 12)); })
-        .catch(function(err) {
-          console.info('[YT] Feed live no disponible, usando tarjetas estáticas.', err && err.message || err);
+    /* =========================================================
+       ============ SISTEMA EN VIVO (v13) ============
+       - Suscriptores y videos de YouTube: API pública
+         SocialCounts (sin clave) para los dos canales.
+       - Feed de videos: RSS oficial vía rss2json (con
+         respaldo allorigins), clasificado en video/short/vivo.
+       - Transmisión en vivo: página /live del canal vía
+         allorigins; sólo se muestra el banner si YouTube
+         confirma que hay una transmisión activa.
+       - Fotos destacadas: assets/galeria/destacadas.json
+         (mismo origen). Si el archivo no existe o la red
+         falla, la galería queda en su orden estático.
+       - Caché local (localStorage, 15 min): la página muestra
+         los últimos datos guardados al instante y luego los
+         refresca en segundo plano. Si todo falla, quedan los
+         datos estáticos del HTML y de SOCIAL_STATS.
+       ========================================================= */
+    var LIVE_CACHE_KEY = 'jemaf_live_cache_v1';
+    var LIVE_CACHE_TTL = 15 * 60 * 1000;
+    var YT_CHANNELS = {
+      pastorJavier: { id: 'UCrrGRL_XdPleFjWNAa0-Dhg', handle: '@Profetajavierbelliard' },
+      pastoraMarnie: { id: 'UCv4mZWLz5ZBHLEkT3ycC9fA', handle: '@profetaMarnieBelliard' }
+    };
+
+    function loadLiveCache() {
+      try {
+        var raw = window.localStorage && localStorage.getItem(LIVE_CACHE_KEY);
+        if (!raw) return null;
+        var data = JSON.parse(raw);
+        if (!data || !data.ts || (Date.now() - data.ts) > LIVE_CACHE_TTL) return null;
+        return data;
+      } catch (_) { return null; }
+    }
+
+    function saveLiveCache(patch) {
+      try {
+        if (!window.localStorage) return;
+        var data = loadLiveCache() || {};
+        Object.keys(patch).forEach(function(k) { data[k] = patch[k]; });
+        data.ts = Date.now();
+        localStorage.setItem(LIVE_CACHE_KEY, JSON.stringify(data));
+      } catch (_) {}
+    }
+
+    // Marca visible de última actualización (hora local del visitante)
+    function updateLiveTimestamp(ok) {
+      var el = document.getElementById('liveUpdated');
+      if (!el) return;
+      var hora = '';
+      try {
+        hora = new Date().toLocaleString('es-DO', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+      } catch (_) { hora = ''; }
+      if (ok) {
+        el.innerHTML = '<i class="fas fa-circle-check" aria-hidden="true"></i> Contenido actualizado en vivo · ' + escapeHtml(hora) +
+          ' · YouTube en vivo · Instagram, TikTok y Facebook con cifras de referencia.';
+      } else {
+        el.innerHTML = '<i class="fas fa-info-circle" aria-hidden="true"></i> Mostrando la última información guardada · ' + escapeHtml(hora) +
+          ' · YouTube se actualizará solo cuando vuelva la conexión.';
+      }
+    }
+
+    // Contadores de YouTube en vivo (SocialCounts, sin clave).
+    // Devuelve { subscribers, videos, views } o null si falla.
+    function fetchYouTubeStats(channelId) {
+      return fetchWithTimeout('https://api.socialcounts.org/youtube-live-subscriber-count/' + channelId, 10000)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var c = (data && data.counters && (data.counters.api || data.counters.estimation)) || null;
+          if (!c || typeof c.subscriberCount !== 'number') throw new Error('SocialCounts sin datos');
+          return { subscribers: c.subscriberCount, videos: c.videoCount, views: c.viewCount };
         });
     }
 
-    updateYouTubeFeed();
-    var ytInterval = setInterval(updateYouTubeFeed, 15 * 60 * 1000);
+    function updateYouTubeStats() {
+      if (!('fetch' in window)) return Promise.resolve(false);
+      var done = 0;
+      var jobs = Object.keys(YT_CHANNELS).map(function(key) {
+        return fetchYouTubeStats(YT_CHANNELS[key].id)
+          .then(function(s) {
+            if (key === 'pastorJavier') {
+              if (s.subscribers) SOCIAL_STATS.pastorJavier.youtube.count = s.subscribers;
+              if (s.videos) SOCIAL_STATS.pastorJavier.ytVideos.count = s.videos;
+            } else if (key === 'pastoraMarnie') {
+              if (s.subscribers) SOCIAL_STATS.pastoraMarnie.youtube.count = s.subscribers;
+            }
+            done++;
+            return true;
+          })
+          .catch(function(err) {
+            console.info('[YT] Contadores en vivo no disponibles para ' + key + ':', err && err.message || err);
+            return false;
+          });
+      });
+      return Promise.all(jobs).then(function(results) {
+        var anyOk = results.some(function(r) { return r; });
+        if (anyOk) {
+          renderSocialStats();
+          document.body.classList.add('stats-live');
+          saveLiveCache({ stats: {
+            javierSubs: SOCIAL_STATS.pastorJavier.youtube.count,
+            javierVideos: SOCIAL_STATS.pastorJavier.ytVideos.count,
+            marnieSubs: SOCIAL_STATS.pastoraMarnie.youtube.count
+          }});
+        }
+        return anyOk;
+      });
+    }
+
+    // ¿Hay una transmisión en vivo ahora mismo en el canal principal?
+    // Lee la página /live de YouTube vía allorigins y busca la marca
+    // "isLive":true junto a un videoId. Sin transmisión, no hay banner.
+    function checkLiveNow() {
+      if (!('fetch' in window)) return Promise.resolve(null);
+      var url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.youtube.com/@Profetajavierbelliard/live');
+      return fetchWithTimeout(url, 12000)
+        .then(function(r) { return r.text(); })
+        .then(function(html) {
+          if (!html || html.indexOf('"isLive":true') === -1) return null;
+          var idx = html.indexOf('"isLive":true');
+          var window_txt = html.slice(Math.max(0, idx - 4000), idx + 4000);
+          var m = window_txt.match(/"videoId"\s*:\s*"([a-zA-Z0-9_-]{11})"/);
+          if (!m) return null;
+          var titleMatch = window_txt.match(/"title"\s*:\s*\{\s*"simpleText"\s*:\s*"([^"]+)"/);
+          return { vid: m[1], title: titleMatch ? titleMatch[1] : 'Transmisión en vivo del Pastor Javier Belliard' };
+        })
+        .catch(function(err) {
+          console.info('[YT] No se pudo comprobar la transmisión en vivo:', err && err.message || err);
+          return null;
+        });
+    }
+
+    function showLiveBanner(live) {
+      var banner = document.getElementById('liveBanner');
+      var liveBtn = document.querySelector('.yt-ch-btn.live');
+      if (!banner) return;
+      if (!live) {
+        banner.hidden = true;
+        if (liveBtn) {
+          liveBtn.classList.remove('is-live');
+          var s = liveBtn.querySelector('div span');
+          if (s) s.textContent = 'Transmisiones de servicios';
+        }
+        return;
+      }
+      banner.hidden = false;
+      var titleEl = document.getElementById('liveBannerTitle');
+      if (titleEl) titleEl.textContent = live.title;
+      var btn = document.getElementById('liveBannerBtn');
+      if (btn) btn.href = 'https://www.youtube.com/watch?v=' + live.vid;
+      if (liveBtn) {
+        liveBtn.classList.add('is-live');
+        liveBtn.href = 'https://www.youtube.com/watch?v=' + live.vid;
+        var strong = liveBtn.querySelector('div strong');
+        if (strong) strong.textContent = 'EN VIVO AHORA';
+        var span = liveBtn.querySelector('div span');
+        if (span) span.textContent = live.title;
+      }
+      // El reproductor destacado pasa a la transmisión (sin autoplay).
+      if (ytPlayerWrap && currentPlayerVid() !== live.vid) {
+        var preferNocookie = IS_FILE_PROTOCOL || !IS_HTTPS;
+        replaceIframeWithNew(live.vid, { attempt: 1, useNocookie: preferNocookie, autoplay: false });
+        if (ytMainTitle) ytMainTitle.textContent = live.title;
+      }
+    }
+
+    // Fotos destacadas: lee assets/galeria/destacadas.json y pone esas
+    // fotos primero en el carrusel de oraciones, con insignia.
+    // Si el JSON no existe o falla, la galería queda como está.
+    function loadFeaturedPhotos() {
+      if (!('fetch' in window)) return Promise.resolve(false);
+      return fetchWithTimeout('assets/galeria/destacadas.json', 5000)
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function(data) {
+          var list = (data && data.destacadas) || [];
+          if (!list.length) return false;
+          var carousel = document.getElementById('prayerCarousel');
+          if (!carousel) return false;
+          var featuredHtml = '';
+          var seen = {};
+          list.forEach(function(f) {
+            if (!f || !f.src) return;
+            seen[f.src] = true;
+            var icon = f.icon || 'fa-star';
+            var caption = f.caption || '';
+            var alt = f.alt || caption || 'Foto destacada';
+            featuredHtml += '<div class="prayer-slide prayer-slide--featured">' +
+              '<img src="' + escapeHtml(f.src) + '" alt="' + escapeHtml(alt) + '" loading="lazy" decoding="async" />' +
+              '<span class="featured-badge" aria-hidden="true"><i class="fas fa-star"></i> Destacada</span>' +
+              '<div class="prayer-caption"><i class="fas ' + escapeHtml(icon) + '" aria-hidden="true"></i><span>' + escapeHtml(caption) + '</span></div>' +
+              '</div>';
+          });
+          // Quitar de la galería estática las fotos que ahora son destacadas
+          // (evita duplicados) y poner las destacadas al principio.
+          carousel.querySelectorAll('.prayer-slide').forEach(function(slide) {
+            var img = slide.querySelector('img');
+            if (img && seen[img.getAttribute('src')]) slide.parentNode.removeChild(slide);
+          });
+          carousel.querySelectorAll('.prayer-slide').forEach(function(slide, i) {
+            slide.classList.toggle('active', i === 0 && !featuredHtml);
+          });
+          carousel.insertAdjacentHTML('afterbegin', featuredHtml);
+          carousel.querySelectorAll('.prayer-slide').forEach(function(slide, i) {
+            slide.classList.toggle('active', i === 0);
+          });
+          return true;
+        })
+        .catch(function(err) {
+          console.info('[Fotos] Sin lista de destacadas, galería estática:', err && err.message || err);
+          return false;
+        });
+    }
+
+    function updateYouTubeFeed() {
+      if (!('fetch' in window)) return Promise.resolve(false);
+      return fetchFeed(CHANNEL_ID)
+        .then(function(items) {
+          applyFeedItems(items.slice(0, 12));
+          saveLiveCache({ feed: items.slice(0, 12) });
+          return true;
+        })
+        .catch(function(err) {
+          console.info('[YT] Feed live no disponible, usando tarjetas estáticas.', err && err.message || err);
+          return false;
+        });
+    }
+
+    // Un solo ciclo de actualización en vivo: feed + contadores + live.
+    function runLiveCycle() {
+      var feedOk = false, statsOk = false;
+      return updateYouTubeFeed()
+        .then(function(ok) { feedOk = ok; return updateYouTubeStats(); })
+        .then(function(ok) { statsOk = ok; return checkLiveNow(); })
+        .then(function(live) {
+          showLiveBanner(live);
+          updateLiveTimestamp(feedOk || statsOk);
+        })
+        .catch(function() { updateLiveTimestamp(false); });
+    }
+
+    // Caché instantánea al cargar (si tiene menos de 15 min), y luego
+    // refresco en segundo plano sin recargar la página.
+    (function applyLiveCache() {
+      var cache = loadLiveCache();
+      if (!cache) return;
+      if (cache.stats) {
+        if (cache.stats.javierSubs) SOCIAL_STATS.pastorJavier.youtube.count = cache.stats.javierSubs;
+        if (cache.stats.javierVideos) SOCIAL_STATS.pastorJavier.ytVideos.count = cache.stats.javierVideos;
+        if (cache.stats.marnieSubs) SOCIAL_STATS.pastoraMarnie.youtube.count = cache.stats.marnieSubs;
+        renderSocialStats();
+      }
+      if (cache.feed && cache.feed.length) {
+        try { applyFeedItems(cache.feed); } catch (_) {}
+      }
+    })();
+
+    runLiveCycle();
+    var ytInterval = setInterval(runLiveCycle, 15 * 60 * 1000);
 
     document.addEventListener('visibilitychange', function() {
       if (document.hidden) {
         clearInterval(ytInterval);
       } else {
-        ytInterval = setInterval(updateYouTubeFeed, 15 * 60 * 1000);
-        updateYouTubeFeed();
+        ytInterval = setInterval(runLiveCycle, 15 * 60 * 1000);
+        runLiveCycle();
       }
     });
 
@@ -794,21 +1145,36 @@
       };
     }
 
+    // Las fotos destacadas se cargan primero (con tiempo límite de
+    // 1,5 s para no retrasar la página) y luego se crean los
+    // carruseles sobre el orden final de las fotos.
     var carouselJavierEl = document.getElementById('carouselJavier');
     var carouselMarnieEl = document.getElementById('carouselMarnie');
     var prayerCarouselEl = document.getElementById('prayerCarousel');
 
-    var sliderJavier = carouselJavierEl
-      ? createSlider(carouselJavierEl, '.pc-slide', document.getElementById('dotsJavier'), 5000, false) : null;
-    var sliderMarnie = carouselMarnieEl
-      ? createSlider(carouselMarnieEl, '.pc-slide', document.getElementById('dotsMarnie'), 5000, false) : null;
-    var sliderPrayer = prayerCarouselEl
-      ? createSlider(prayerCarouselEl, '.prayer-slide', document.getElementById('prayerDots'), 6000, true) : null;
+    function initSliders() {
+      if (carouselJavierEl) createSlider(carouselJavierEl, '.pc-slide', document.getElementById('dotsJavier'), 5000, false);
+      if (carouselMarnieEl) createSlider(carouselMarnieEl, '.pc-slide', document.getElementById('dotsMarnie'), 5000, false);
+      if (prayerCarouselEl) createSlider(prayerCarouselEl, '.prayer-slide', document.getElementById('prayerDots'), 6000, true);
+    }
 
-    // NOTA: Las fotos destacadas de los pastores y de la galería son
-    // fotografías reales fijas (curadas desde sus redes oficiales).
-    // Se eliminó la auto-actualización que las reemplazaba por
-    // miniaturas de videos de YouTube.
+    var featuredReady = loadFeaturedPhotos();
+    if (featuredReady && typeof featuredReady.then === 'function') {
+      var featuredTimeout = new Promise(function(resolve) {
+        setTimeout(function() { resolve(false); }, 1500);
+      });
+      Promise.race([featuredReady, featuredTimeout]).then(function() { initSliders(); });
+    } else {
+      initSliders();
+    }
+
+    // NOTA (v13): Las fotos destacadas de los pastores y de la
+    // galería son fotografías reales fijas (curadas desde sus
+    // redes oficiales). El orden de la galería de oraciones se
+    // puede actualizar sin tocar el HTML: basta con editar
+    // assets/galeria/destacadas.json (ver README). Se eliminó
+    // la auto-actualización que las reemplazaba por miniaturas
+    // de videos de YouTube.
 
     /* ===== Aviso de contexto file:// (sólo desarrollo local) ===== */
     if (IS_FILE_PROTOCOL) {
