@@ -1,1 +1,385 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwojIC0qLSBjb2Rpbmc6IHV0Zi04IC0qLQoiIiIKYWN0dWFsaXphci1zZWd1aWRvcmVzLnB5IOKAlCBPYnNlcnZhZG9yIGF1dG9tw6F0aWNvIGRlIHNlZ3VpZG9yZXMgZGUgSkVNQUYuCgpWaXNpdGEgbGFzIHDDoWdpbmFzIHDDumJsaWNhcyBkZSBsYXMgcmVkZXMgZGUgbGEgSWdsZXNpYSBKZXN1Y3Jpc3RvIGVzIE1pCkFtaWdvIEZpZWwgKEpFTUFGKSBwb3IgZnVlcmEsIG9ic2VydmEgY3XDoW50b3Mgc2VndWlkb3JlcyB0aWVuZSBjYWRhIHVuYSB5CmFjdHVhbGl6YSBhc3NldHMvc29jaWFsLXN0YXRzLmpzb24sIGxhIGZ1ZW50ZSBkZSB2ZXJkYWQgcXVlIGxlZSBsYSBww6FnaW5hCihqcy9tYWluLmpzKS4gU29sbyBzZSBzdWJlIGVsIGNhbWJpbyBhIEdpdEh1YiBjdWFuZG8gaGF5IGNpZnJhcyBudWV2YXMKcmVhbGVzLiBOdW5jYSBzZSBpbnZlbnRhbiBjaWZyYXM6IHNpIHVuYSBww6FnaW5hIGJsb3F1ZWEgbGEgdmlzaXRhIG8gbm8KdHJhZSBlbCBjb250YWRvciwgc2UgcmVnaXN0cmEgY29tbyBibG9xdWVhZGEvbm8gb2JzZXJ2YWJsZSB5IHNlIGNvbnNlcnZhCmVsIMO6bHRpbW8gdmFsb3IgY29ub2NpZG8uCgpVc286CiAgICBweXRob24zIGFjdHVhbGl6YXItc2VndWlkb3Jlcy5weSBbLS1yZXBvIERJUl0gWy0tbm8tcHVzaF0KCiAgLS1yZXBvIERJUiAgIERpcmVjdG9yaW8gbG9jYWwgZGVsIHJlcG9zaXRvcmlvIChwb3IgZGVmZWN0bywgZWwgZGUgZXN0ZQogICAgICAgICAgICAgICBzY3JpcHQ6IH4vd29ya3NwYWNlL3BhZ2luYS1pZ2xlc2lhL3JlcG8tdjEzKS4KICAtLW5vLXB1c2ggICAgU29sbyBhY3R1YWxpemEgZWwgSlNPTiBsb2NhbCB5IGVsIHJlZ2lzdHJvOyBubyBzdWJlIGEgR2l0SHViLgoKRnVlbnRlczoKICAtIFlvdVR1YmUgKEphdmllciB5IE1hcm5pZSk6IEFQSSBww7pibGljYSBkZSBTb2NpYWxDb3VudHMgKHNpbiBjbGF2ZSkuCiAgLSBUaWtUb2sgQHByb2ZldGFqYXZpZXJiZWxsaWFyZDogcMOhZ2luYSBww7pibGljYSwgZGF0b3MgZGVsIGF1dG9yLgogIC0gWCBAUHJvcGhldGphdmllcjogcMOhZ2luYSBww7pibGljYSwgZGF0b3MgaW5jcnVzdGFkb3MgZGVsIHBlcmZpbC4KICAtIEluc3RhZ3JhbSwgRmFjZWJvb2sgeSBUaHJlYWRzOiBzZSBpbnRlbnRhbiwgcGVybyBob3kgc3VzIHDDoWdpbmFzCiAgICBww7pibGljYXMgbm8gZW50cmVnYW4gZWwgY29udGFkb3IgYSB1bmEgdmlzaXRhIGF1dG9tw6F0aWNhIChJbnN0YWdyYW0geQogICAgVGhyZWFkcyBubyBsbyB0cmFlbiBlbiBlbCBIVE1MOyBGYWNlYm9vayBkZXZ1ZWx2ZSBIVFRQIDQwMCkuIFF1ZWRhbgogICAgY29tbyByZWZlcmVuY2lhIGhhc3RhIHF1ZSBzZSBjb25lY3RlbiBzdXMgQVBJcyBvZmljaWFsZXMuCiIiIgoKaW1wb3J0IGJhc2U2NAppbXBvcnQganNvbgppbXBvcnQgb3MKaW1wb3J0IHJlCmltcG9ydCBzdWJwcm9jZXNzCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lLCB0aW1lem9uZQoKdHJ5OgogICAgZnJvbSB6b25laW5mbyBpbXBvcnQgWm9uZUluZm8KZXhjZXB0IEV4Y2VwdGlvbjogICMgcHJhZ21hOiBubyBjb3ZlcgogICAgWm9uZUluZm8gPSBOb25lCgpSRVBPX0RFRkFVTFQgPSBvcy5wYXRoLmpvaW4ob3MucGF0aC5leHBhbmR1c2VyKCJ+IiksICJ3b3Jrc3BhY2UiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgInBhZ2luYS1pZ2xlc2lhIiwgInJlcG8tdjEzIikKSlNPTl9SRUwgPSBvcy5wYXRoLmpvaW4oImFzc2V0cyIsICJzb2NpYWwtc3RhdHMuanNvbiIpCkxPR19OQU1FID0gInVsdGltYS1lamVjdWNpb24ubG9nIgpVQSA9ICgiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2ICIKICAgICAgIihLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzEyMC4wIFNhZmFyaS81MzcuMzYiKQpUSU1FT1VUID0gMjAKT1dORVIgPSAiamVpc29uMTIwOTE4LWRlc2lnbiIKUkVQTyA9ICJQQUdJTkFfSUdMRVNJQSIKR0lUSFVCX0NMSSA9ICIvb3B0L2hhdGNoL2Jpbi9naXRodWIiCgojIENhbmFsZXMgeSBwZXJmaWxlcyBxdWUgc2Ugb2JzZXJ2YW4uClRBUkdFVFMgPSBbCiAgICB7ImtleSI6ICJwYXN0b3JKYXZpZXIueW91dHViZSIsICJraW5kIjogInlvdXR1YmUiLAogICAgICJjaGFubmVsX2lkIjogIlVDcnJHUkxfWGRQbGVGaldOQWEwLURoZyIsCiAgICAgImxhYmVsIjogIllvdVR1YmUgQFByb2ZldGFqYXZpZXJiZWxsaWFyZCJ9LAogICAgeyJrZXkiOiAicGFzdG9yYU1hcm5pZS55b3V0dWJlIiwgImtpbmQiOiAieW91dHViZSIsCiAgICAgImNoYW5uZWxfaWQiOiAiVUN2NG1aV0x6NVpCSExFa1QzeWNDOWZBIiwKICAgICAibGFiZWwiOiAiWW91VHViZSBAcHJvZmV0YU1hcm5pZUJlbGxpYXJkIn0sCiAgICB7ImtleSI6ICJwYXN0b3JKYXZpZXIudGlrdG9rIiwgImtpbmQiOiAidGlrdG9rIiwKICAgICAidXNlcm5hbWUiOiAicHJvZmV0YWphdmllcmJlbGxpYXJkIiwKICAgICAibGFiZWwiOiAiVGlrVG9rIEBwcm9mZXRhamF2aWVyYmVsbGlhcmQifSwKICAgIHsia2V5IjogInBhc3Rvckphdmllci54IiwgImtpbmQiOiAieCIsCiAgICAgInVzZXJuYW1lIjogIlByb3BoZXRqYXZpZXIiLAogICAgICJsYWJlbCI6ICJYIEBQcm9waGV0amF2aWVyIn0sCiAgICB7ImtleSI6ICJwYXN0b3JKYXZpZXIuaW5zdGFncmFtIiwgImtpbmQiOiAiaW5zdGFncmFtIiwKICAgICAidXNlcm5hbWUiOiAicHJvZmV0YWphdmllcmJlbGxpYXJkIiwKICAgICAibGFiZWwiOiAiSW5zdGFncmFtIEBwcm9mZXRhamF2aWVyYmVsbGlhcmQifSwKICAgIHsia2V5IjogInBhc3RvcmFNYXJuaWUuaW5zdGFncmFtIiwgImtpbmQiOiAiaW5zdGFncmFtIiwKICAgICAidXNlcm5hbWUiOiAibWFybmllX2Rpc2xhX2JlbGxpYXJkIiwKICAgICAibGFiZWwiOiAiSW5zdGFncmFtIEBtYXJuaWVfZGlzbGFfYmVsbGlhcmQifSwKICAgIHsia2V5IjogInBhc3Rvckphdmllci5mYWNlYm9vayIsICJraW5kIjogImZhY2Vib29rIiwKICAgICAidXNlcm5hbWUiOiAicHJvZmV0YWphdmllcm9maWNpYWwiLAogICAgICJsYWJlbCI6ICJGYWNlYm9vayBwcm9mZXRhamF2aWVyb2ZpY2lhbCJ9LAogICAgeyJrZXkiOiAiaWdsZXNpYS5mYWNlYm9vayIsICJraW5kIjogImZhY2Vib29rIiwKICAgICAidXNlcm5hbWUiOiAiamVzdWNyaXN0b2VzbWlhbWlnb2ZpZWwxIiwKICAgICAibGFiZWwiOiAiRmFjZWJvb2sgamVzdWNyaXN0b2VzbWlhbWlnb2ZpZWwxIn0sCiAgICB7ImtleSI6ICJwYXN0b3JKYXZpZXIudGhyZWFkcyIsICJraW5kIjogInRocmVhZHMiLAogICAgICJ1c2VybmFtZSI6ICJwcm9mZXRhamF2aWVyYmVsbGlhcmQiLAogICAgICJsYWJlbCI6ICJUaHJlYWRzIEBwcm9mZXRhamF2aWVyYmVsbGlhcmQifSwKXQoKU09DSUFMQ09VTlRTID0gKCJodHRwczovL2FwaS5zb2NpYWxjb3VudHMub3JnLyIKICAgICAgICAgICAgICAgICJ5b3V0dWJlLWxpdmUtc3Vic2NyaWJlci1jb3VudC97fSIpCgoKZGVmIGxvZyhtc2cpOgogICAgcHJpbnQobXNnLCBmbHVzaD1UcnVlKQoKCmRlZiBmZXRjaF90ZXh0KHVybCk6CiAgICAiIiJEZXZ1ZWx2ZSAoaHR0cF9zdGF0dXMsIHRleHRvKSBkZSB1bmEgcMOhZ2luYSBww7pibGljYS4iIiIKICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QodXJsLCBoZWFkZXJzPXsiVXNlci1BZ2VudCI6IFVBfSkKICAgIHRyeToKICAgICAgICB3aXRoIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PVRJTUVPVVQpIGFzIHJlc3A6CiAgICAgICAgICAgIHJldHVybiByZXNwLnN0YXR1cywgcmVzcC5yZWFkKCkuZGVjb2RlKCJ1dGYtOCIsICJpZ25vcmUiKQogICAgZXhjZXB0IHVybGxpYi5lcnJvci5IVFRQRXJyb3IgYXMgZToKICAgICAgICByZXR1cm4gZS5jb2RlLCAiIgogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOiAgIyB0aW1lb3V0LCBETlMsIGV0Yy4KICAgICAgICByZXR1cm4gMCwgc3RyKGUpCgoKZGVmIGZldGNoX2pzb24odXJsKToKICAgIHN0YXR1cywgdGV4dCA9IGZldGNoX3RleHQodXJsKQogICAgaWYgc3RhdHVzICE9IDIwMCBvciBub3QgdGV4dDoKICAgICAgICByZXR1cm4gTm9uZSwgc3RhdHVzCiAgICB0cnk6CiAgICAgICAgcmV0dXJuIGpzb24ubG9hZHModGV4dCksIHN0YXR1cwogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gTm9uZSwgc3RhdHVzCgoKZGVmIG9ic2VydmVfeW91dHViZSh0KToKICAgIGRhdGEsIHN0YXR1cyA9IGZldGNoX2pzb24oU09DSUFMQ09VTlRTLmZvcm1hdCh0WyJjaGFubmVsX2lkIl0pKQogICAgaWYgbm90IGRhdGEgb3IgImNvdW50ZXJzIiBub3QgaW4gZGF0YToKICAgICAgICByZXR1cm4gTm9uZSwgImJsb3F1ZWFkbyIsIFwKICAgICAgICAgICAgIlNvY2lhbENvdW50cyBIVFRQIHt9IG8gc2luIGRhdG9zIi5mb3JtYXQoc3RhdHVzKQogICAgY291bnRlcnMgPSBkYXRhWyJjb3VudGVycyJdCiAgICBlc3QgPSBjb3VudGVycy5nZXQoImVzdGltYXRpb24iKSBvciB7fQogICAgYXBpID0gY291bnRlcnMuZ2V0KCJhcGkiKSBvciB7fQogICAgc3VicyA9IGVzdC5nZXQoInN1YnNjcmliZXJDb3VudCIpIG9yIGFwaS5nZXQoInN1YnNjcmliZXJDb3VudCIpCiAgICB2aWRlb3MgPSBlc3QuZ2V0KCJ2aWRlb0NvdW50Iikgb3IgYXBpLmdldCgidmlkZW9Db3VudCIpCiAgICBpZiBub3QgaXNpbnN0YW5jZShzdWJzLCBpbnQpOgogICAgICAgIHJldHVybiBOb25lLCAiYmxvcXVlYWRvIiwgIlNvY2lhbENvdW50cyBzaW4gc3Vic2NyaWJlckNvdW50IgogICAgZXh0cmEgPSB7Inl0VmlkZW9zIjogdmlkZW9zfSBpZiBpc2luc3RhbmNlKHZpZGVvcywgaW50KSBlbHNlIHt9CiAgICByZXR1cm4gc3VicywgIm9ic2VydmFkbyIsIFwKICAgICAgICAiU29jaWFsQ291bnRzOiB7fSBzdXNjcmlwdG9yZXMsIHt9IHZpZGVvcyIuZm9ybWF0KHN1YnMsIHZpZGVvcyksIGV4dHJhCgoKZGVmIG9ic2VydmVfdGlrdG9rKHQpOgogICAgdXJsID0gImh0dHBzOi8vd3d3LnRpa3Rvay5jb20vQHt9Ii5mb3JtYXQodFsidXNlcm5hbWUiXSkKICAgIHN0YXR1cywgaHRtbCA9IGZldGNoX3RleHQodXJsKQogICAgaWYgc3RhdHVzICE9IDIwMCBvciBub3QgaHRtbDoKICAgICAgICByZXR1cm4gTm9uZSwgImJsb3F1ZWFkbyIsICJUaWtUb2sgSFRUUCB7fSIuZm9ybWF0KHN0YXR1cykKICAgIGlkeCA9IGh0bWwuZmluZCgnInVuaXF1ZUlkIjoie30iJy5mb3JtYXQodFsidXNlcm5hbWUiXSkpCiAgICBpZiBpZHggPCAwOgogICAgICAgIHJldHVybiBOb25lLCAibm9fb2JzZXJ2YWJsZSIsIFwKICAgICAgICAgICAgIlRpa1Rvazogbm8gc2UgZW5jb250csOzIGVsIHBlcmZpbCBlbiBsYSBww6FnaW5hIgogICAgc2VnID0gaHRtbFtpZHg6aWR4ICsgNDAwMF0KICAgIG0gPSByZS5zZWFyY2gociciZm9sbG93ZXJDb3VudCI6XHMqIj8oXGQrKSI/Jywgc2VnKQogICAgaWYgbm90IG06CiAgICAgICAgcmV0dXJuIE5vbmUsICJub19vYnNlcnZhYmxlIiwgXAogICAgICAgICAgICAiVGlrVG9rOiBzaW4gZm9sbG93ZXJDb3VudCBlbiBsb3MgZGF0b3MgZGVsIGF1dG9yIgogICAgcmV0dXJuIGludChtLmdyb3VwKDEpKSwgIm9ic2VydmFkbyIsIFwKICAgICAgICAiUMOhZ2luYSBww7pibGljYTogZm9sbG93ZXJDb3VudCB7fSBlbiBsb3MgZGF0b3MgZGVsIGF1dG9yIi5mb3JtYXQoCiAgICAgICAgICAgIG0uZ3JvdXAoMSkpCgoKZGVmIG9ic2VydmVfeCh0KToKICAgIHVybCA9ICJodHRwczovL3guY29tL3t9Ii5mb3JtYXQodFsidXNlcm5hbWUiXSkKICAgIHN0YXR1cywgaHRtbCA9IGZldGNoX3RleHQodXJsKQogICAgaWYgc3RhdHVzICE9IDIwMCBvciBub3QgaHRtbDoKICAgICAgICByZXR1cm4gTm9uZSwgImJsb3F1ZWFkbyIsICJYIEhUVFAge30iLmZvcm1hdChzdGF0dXMpCiAgICBtID0gcmUuc2VhcmNoKHInInJlbGF0aW9uc2hpcF9jb3VudHMiOlxzKlx7XHMqImZvbGxvd2VycyI6XHMqKFxkKyknLAogICAgICAgICAgICAgICAgICBodG1sLnJlcGxhY2UoJ1xcIicsICciJykpCiAgICBpZiBub3QgbToKICAgICAgICByZXR1cm4gTm9uZSwgIm5vX29ic2VydmFibGUiLCBcCiAgICAgICAgICAgICJYOiBzaW4gcmVsYXRpb25zaGlwX2NvdW50cyBlbiBsYSBww6FnaW5hIgogICAgcmV0dXJuIGludChtLmdyb3VwKDEpKSwgIm9ic2VydmFkbyIsIFwKICAgICAgICAiUMOhZ2luYSBww7pibGljYTogcmVsYXRpb25zaGlwX2NvdW50cy5mb2xsb3dlcnMge30iLmZvcm1hdChtLmdyb3VwKDEpKQoKCmRlZiBvYnNlcnZlX2luc3RhZ3JhbSh0KToKICAgIHVybCA9ICJodHRwczovL3d3dy5pbnN0YWdyYW0uY29tL3t9LyIuZm9ybWF0KHRbInVzZXJuYW1lIl0pCiAgICBzdGF0dXMsIGh0bWwgPSBmZXRjaF90ZXh0KHVybCkKICAgIGlmIHN0YXR1cyAhPSAyMDAgb3Igbm90IGh0bWw6CiAgICAgICAgcmV0dXJuIE5vbmUsICJibG9xdWVhZG8iLCAiSW5zdGFncmFtIEhUVFAge30iLmZvcm1hdChzdGF0dXMpCiAgICBpZiByZS5zZWFyY2gocidlZGdlX2ZvbGxvd2VkX2J5LnswLDgwfSJjb3VudCI6XHMqKFxkKyknLCBodG1sKToKICAgICAgICBuID0gaW50KHJlLnNlYXJjaCgKICAgICAgICAgICAgcidlZGdlX2ZvbGxvd2VkX2J5LnswLDgwfSJjb3VudCI6XHMqKFxkKyknLCBodG1sKS5ncm91cCgxKSkKICAgICAgICByZXR1cm4gbiwgIm9ic2VydmFkbyIsICJQw6FnaW5hIHDDumJsaWNhOiBlZGdlX2ZvbGxvd2VkX2J5IHt9Ii5mb3JtYXQobikKICAgIHJldHVybiBOb25lLCAibm9fb2JzZXJ2YWJsZSIsIFwKICAgICAgICAoIkxhIHDDoWdpbmEgcMO6YmxpY2EgY2FyZ2EgKEhUVFAgMjAwKSBwZXJvIHN1IEhUTUwgbm8gdHJhZSBlbCAiCiAgICAgICAgICJjb250YWRvciBkZSBzZWd1aWRvcmVzOyBJbnN0YWdyYW0gbG8gc2lydmUgc29sbyBjb24gIgogICAgICAgICAiSmF2YVNjcmlwdC9pbmljaW8gZGUgc2VzacOzbi4iKQoKCmRlZiBvYnNlcnZlX2ZhY2Vib29rKHQpOgogICAgdXJsID0gImh0dHBzOi8vd3d3LmZhY2Vib29rLmNvbS97fS8iLmZvcm1hdCh0WyJ1c2VybmFtZSJdKQogICAgc3RhdHVzLCBodG1sID0gZmV0Y2hfdGV4dCh1cmwpCiAgICBpZiBzdGF0dXMgIT0gMjAwOgogICAgICAgIHJldHVybiBOb25lLCAiYmxvcXVlYWRvIiwgXAogICAgICAgICAgICAiRmFjZWJvb2sgSFRUUCB7fSAocMOhZ2luYSBkZSBlcnJvciBhbnRpLWJvdHMpIi5mb3JtYXQoc3RhdHVzKQogICAgcmV0dXJuIE5vbmUsICJub19vYnNlcnZhYmxlIiwgXAogICAgICAgICJGYWNlYm9vayBjYXJnYSBwZXJvIHNpbiBjb250YWRvciBsZWdpYmxlIGVuIGVsIEhUTUwiCgoKZGVmIG9ic2VydmVfdGhyZWFkcyh0KToKICAgIHVybCA9ICJodHRwczovL3d3dy50aHJlYWRzLm5ldC9Ae30iLmZvcm1hdCh0WyJ1c2VybmFtZSJdKQogICAgc3RhdHVzLCBodG1sID0gZmV0Y2hfdGV4dCh1cmwpCiAgICBpZiBzdGF0dXMgIT0gMjAwIG9yIG5vdCBodG1sOgogICAgICAgIHJldHVybiBOb25lLCAiYmxvcXVlYWRvIiwgIlRocmVhZHMgSFRUUCB7fSIuZm9ybWF0KHN0YXR1cykKICAgIG0gPSByZS5zZWFyY2gociciZm9sbG93ZXJfY291bnQiOlxzKihcZCspJywgaHRtbCkKICAgIGlmIG06CiAgICAgICAgcmV0dXJuIGludChtLmdyb3VwKDEpKSwgIm9ic2VydmFkbyIsIFwKICAgICAgICAgICAgIlDDoWdpbmEgcMO6YmxpY2E6IGZvbGxvd2VyX2NvdW50IHt9Ii5mb3JtYXQobS5ncm91cCgxKSkKICAgIHJldHVybiBOb25lLCAibm9fb2JzZXJ2YWJsZSIsIFwKICAgICAgICAiTGEgcMOhZ2luYSBww7pibGljYSBjYXJnYSAoSFRUUCAyMDApIHBlcm8gc3UgSFRNTCBubyB0cmFlIGVsIGNvbnRhZG9yIgoKCk9CU0VSVkVSUyA9IHsKICAgICJ5b3V0dWJlIjogb2JzZXJ2ZV95b3V0dWJlLAogICAgInRpa3RvayI6IG9ic2VydmVfdGlrdG9rLAogICAgIngiOiBvYnNlcnZlX3gsCiAgICAiaW5zdGFncmFtIjogb2JzZXJ2ZV9pbnN0YWdyYW0sCiAgICAiZmFjZWJvb2siOiBvYnNlcnZlX2ZhY2Vib29rLAogICAgInRocmVhZHMiOiBvYnNlcnZlX3RocmVhZHMsCn0KCgpkZWYgZ2V0X25lc3RlZChkLCBrZXkpOgogICAgY3VyID0gZAogICAgZm9yIHBhcnQgaW4ga2V5LnNwbGl0KCIuIik6CiAgICAgICAgaWYgbm90IGlzaW5zdGFuY2UoY3VyLCBkaWN0KSBvciBwYXJ0IG5vdCBpbiBjdXI6CiAgICAgICAgICAgIHJldHVybiBOb25lCiAgICAgICAgY3VyID0gY3VyW3BhcnRdCiAgICByZXR1cm4gY3VyCgoKZGVmIHNldF9uZXN0ZWQoZCwga2V5LCB2YWx1ZSk6CiAgICBjdXIgPSBkCiAgICBwYXJ0cyA9IGtleS5zcGxpdCgiLiIpCiAgICBmb3IgcGFydCBpbiBwYXJ0c1s6LTFdOgogICAgICAgIGN1ciA9IGN1ci5zZXRkZWZhdWx0KHBhcnQsIHt9KQogICAgY3VyW3BhcnRzWy0xXV0gPSB2YWx1ZQoKCmRlZiBub3dfaXNvKCk6CiAgICBpZiBab25lSW5mbzoKICAgICAgICBub3cgPSBkYXRldGltZS5ub3coWm9uZUluZm8oIkFtZXJpY2EvU2FudG9fRG9taW5nbyIpKQogICAgZWxzZToKICAgICAgICBub3cgPSBkYXRldGltZS5ub3codGltZXpvbmUudXRjKQogICAgcmV0dXJuIG5vdwoKCmRlZiBnaXRodWJfcmVhZF9maWxlKHBhdGgpOgogICAgIiIiTGVlIHVuIGFyY2hpdm8gZGUgR2l0SHViIChyYW1hIG1haW4pIHbDrWEgbGEgQ0xJIGRlbCBjb25lY3Rvci4iIiIKICAgIGFyZ3MgPSB7Im93bmVyIjogT1dORVIsICJyZXBvIjogUkVQTywgInBhdGgiOiBwYXRofQogICAgciA9IHN1YnByb2Nlc3MucnVuKFtHSVRIVUJfQ0xJLCAiY2FsbC1yZWFkLXRvb2wiLCAiLS1uYW1lIiwKICAgICAgICAgICAgICAgICAgICAgICAgImdldF9maWxlX2NvbnRlbnRzIiwgIi0tYXJndW1lbnRzLWpzb24iLAogICAgICAgICAgICAgICAgICAgICAgICBqc29uLmR1bXBzKGFyZ3MpXSwgY2FwdHVyZV9vdXRwdXQ9VHJ1ZSwgdGV4dD1UcnVlLAogICAgICAgICAgICAgICAgICAgICAgIHRpbWVvdXQ9NjApCiAgICBpZiByLnJldHVybmNvZGUgIT0gMDoKICAgICAgICByZXR1cm4gTm9uZSwgTm9uZQogICAgdHJ5OgogICAgICAgIHBheWxvYWQgPSBqc29uLmxvYWRzKHIuc3Rkb3V0KQogICAgICAgIHRleHQgPSBwYXlsb2FkWyJyZXN1bHQiXVsiY29udGVudCJdWzBdWyJ0ZXh0Il0KICAgICAgICBkYXRhID0ganNvbi5sb2Fkcyh0ZXh0KQogICAgICAgIGlmIGlzaW5zdGFuY2UoZGF0YSwgZGljdCkgYW5kICJjb250ZW50IiBpbiBkYXRhOgogICAgICAgICAgICByYXcgPSBiYXNlNjQuYjY0ZGVjb2RlKGRhdGFbImNvbnRlbnQiXSkuZGVjb2RlKCJ1dGYtOCIpCiAgICAgICAgICAgIHJldHVybiByYXcsIGRhdGEuZ2V0KCJzaGEiKQogICAgICAgIHJldHVybiB0ZXh0LCBOb25lCiAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgIHJldHVybiBOb25lLCBOb25lCgoKZGVmIGdpdGh1Yl93cml0ZV9maWxlKHBhdGgsIGNvbnRlbnQsIG1lc3NhZ2UsIHNoYSk6CiAgICAiIiJDcmVhIG8gYWN0dWFsaXphIHVuIGFyY2hpdm8gZW4gR2l0SHViIChyYW1hIG1haW4pLiIiIgogICAgYXJncyA9IHsib3duZXIiOiBPV05FUiwgInJlcG8iOiBSRVBPLCAicGF0aCI6IHBhdGgsCiAgICAgICAgICAgICJjb250ZW50IjogYmFzZTY0LmI2NGVuY29kZShjb250ZW50LmVuY29kZSgidXRmLTgiKSkuZGVjb2RlKCksCiAgICAgICAgICAgICJtZXNzYWdlIjogbWVzc2FnZSwgImJyYW5jaCI6ICJtYWluIn0KICAgIGlmIHNoYToKICAgICAgICBhcmdzWyJzaGEiXSA9IHNoYQogICAgciA9IHN1YnByb2Nlc3MucnVuKFtHSVRIVUJfQ0xJLCAiY2FsbC10b29sIiwgIi0tbmFtZSIsCiAgICAgICAgICAgICAgICAgICAgICAgICJjcmVhdGVfb3JfdXBkYXRlX2ZpbGUiLCAiLS1hcmd1bWVudHMtanNvbiIsCiAgICAgICAgICAgICAgICAgICAgICAgIGpzb24uZHVtcHMoYXJncyldLCBjYXB0dXJlX291dHB1dD1UcnVlLCB0ZXh0PVRydWUsCiAgICAgICAgICAgICAgICAgICAgICAgdGltZW91dD0xODApCiAgICByZXR1cm4gci5yZXR1cm5jb2RlID09IDAsIChyLnN0ZG91dCArIHIuc3RkZXJyKVstMTUwMDpdCgoKZGVmIG1haW4oKToKICAgIHJlcG8gPSBSRVBPX0RFRkFVTFQKICAgIHB1c2ggPSBUcnVlCiAgICBhcmd2ID0gc3lzLmFyZ3ZbMTpdCiAgICBpID0gMAogICAgd2hpbGUgaSA8IGxlbihhcmd2KToKICAgICAgICBpZiBhcmd2W2ldID09ICItLXJlcG8iIGFuZCBpICsgMSA8IGxlbihhcmd2KToKICAgICAgICAgICAgcmVwbyA9IGFyZ3ZbaSArIDFdCiAgICAgICAgICAgIGkgKz0gMgogICAgICAgIGVsaWYgYXJndltpXSA9PSAiLS1uby1wdXNoIjoKICAgICAgICAgICAgcHVzaCA9IEZhbHNlCiAgICAgICAgICAgIGkgKz0gMQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIGkgKz0gMQoKICAgIGpzb25fcGF0aCA9IG9zLnBhdGguam9pbihyZXBvLCBKU09OX1JFTCkKICAgIGxvZ19wYXRoID0gb3MucGF0aC5qb2luKG9zLnBhdGguZGlybmFtZShvcy5wYXRoLmFic3BhdGgoX19maWxlX18pKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgTE9HX05BTUUpCgogICAgd2l0aCBvcGVuKGpzb25fcGF0aCwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZjoKICAgICAgICBkYXRhID0ganNvbi5sb2FkKGYpCgogICAgbm93ID0gbm93X2lzbygpCiAgICBzdGFtcCA9IG5vdy5zdHJmdGltZSgiJWQgJWIgJVksICVIOiVNIEFTVCIpCiAgICBpc28gPSBub3cuaXNvZm9ybWF0KHRpbWVzcGVjPSJzZWNvbmRzIikKCiAgICBjaGFuZ2VzID0gW10KICAgIG9ic2VydmF0aW9ucyA9IFtdCiAgICBmb3IgdCBpbiBUQVJHRVRTOgogICAgICAgIGZuID0gT0JTRVJWRVJTW3RbImtpbmQiXV0KICAgICAgICByZXN1bHQgPSBmbih0KQogICAgICAgIHZhbHVlLCBzdGF0dXMsIGRldGFpbCA9IHJlc3VsdFswXSwgcmVzdWx0WzFdLCByZXN1bHRbMl0KICAgICAgICBleHRyYSA9IHJlc3VsdFszXSBpZiBsZW4ocmVzdWx0KSA+IDMgZWxzZSB7fQogICAgICAgIGVudHJ5ID0gZ2V0X25lc3RlZChkYXRhWyJzdGF0cyJdLCB0WyJrZXkiXSkgb3Ige30KICAgICAgICBvbGQgPSBlbnRyeS5nZXQoImNvdW50IikKICAgICAgICBvYnNlcnZhdGlvbnMuYXBwZW5kKHsKICAgICAgICAgICAgIm5ldHdvcmsiOiB0WyJsYWJlbCJdLCAic3RhdHVzIjogc3RhdHVzLCAiZGV0YWlsIjogZGV0YWlsfSkKICAgICAgICBpZiBzdGF0dXMgPT0gIm9ic2VydmFkbyIgYW5kIGlzaW5zdGFuY2UodmFsdWUsIGludCk6CiAgICAgICAgICAgIGlmIG9sZCAhPSB2YWx1ZToKICAgICAgICAgICAgICAgIGNoYW5nZXMuYXBwZW5kKCJ7fToge30gLT4ge30iLmZvcm1hdCh0WyJsYWJlbCJdLCBvbGQsIHZhbHVlKSkKICAgICAgICAgICAgICAgIGVudHJ5WyJjb3VudCJdID0gdmFsdWUKICAgICAgICAgICAgICAgIGVudHJ5WyJzdGF0dXMiXSA9ICJvYnNlcnZhZG8iCiAgICAgICAgICAgICAgICBpZiAic291cmNlIiBub3QgaW4gZW50cnk6CiAgICAgICAgICAgICAgICAgICAgZW50cnlbInNvdXJjZSJdID0gTm9uZQogICAgICAgICAgICAgICAgc2V0X25lc3RlZChkYXRhWyJzdGF0cyJdLCB0WyJrZXkiXSwgZW50cnkpCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICBlbnRyeVsic3RhdHVzIl0gPSAib2JzZXJ2YWRvIgogICAgICAgICAgICAgICAgc2V0X25lc3RlZChkYXRhWyJzdGF0cyJdLCB0WyJrZXkiXSwgZW50cnkpCiAgICAgICAgICAgICMgRGF0b3MgZXh0cmEgKHAuIGVqLiB0b3RhbCBkZSB2aWRlb3MgZGUgWW91VHViZSkuCiAgICAgICAgICAgIGZvciBlaywgZXYgaW4gZXh0cmEuaXRlbXMoKToKICAgICAgICAgICAgICAgIGdyb3VwID0gdFsia2V5Il0ucnNwbGl0KCIuIiwgMSlbMF0KICAgICAgICAgICAgICAgIGUyID0gZ2V0X25lc3RlZChkYXRhWyJzdGF0cyJdLCBncm91cCArICIuIiArIGVrKSBvciB7fQogICAgICAgICAgICAgICAgaWYgZTIuZ2V0KCJjb3VudCIpICE9IGV2OgogICAgICAgICAgICAgICAgICAgIGNoYW5nZXMuYXBwZW5kKCJ7fS57fToge30gLT4ge30iLmZvcm1hdCgKICAgICAgICAgICAgICAgICAgICAgICAgZ3JvdXAsIGVrLCBlMi5nZXQoImNvdW50IiksIGV2KSkKICAgICAgICAgICAgICAgICAgICBlMlsiY291bnQiXSA9IGV2CiAgICAgICAgICAgICAgICAgICAgZTJbInN0YXR1cyJdID0gIm9ic2VydmFkbyIKICAgICAgICAgICAgICAgICAgICBzZXRfbmVzdGVkKGRhdGFbInN0YXRzIl0sIGdyb3VwICsgIi4iICsgZWssIGUyKQogICAgICAgIGVsaWYgc3RhdHVzIGluICgiYmxvcXVlYWRvIiwgIm5vX29ic2VydmFibGUiKToKICAgICAgICAgICAgIyBTZSBjb25zZXJ2YSBlbCDDumx0aW1vIHZhbG9yIGNvbm9jaWRvOyBzb2xvIHNlIHJlZ2lzdHJhLgogICAgICAgICAgICBpZiBlbnRyeS5nZXQoInN0YXR1cyIpIGluICgib2JzZXJ2YWRvIiwgInJlZmVyZW5jaWEiKToKICAgICAgICAgICAgICAgIHBhc3MKICAgICAgICBsb2coIlt7fV0ge30gLT4ge30gKHt9KSIuZm9ybWF0KAogICAgICAgICAgICBzdGF0dXMsIHRbImxhYmVsIl0sIHZhbHVlIGlmIHZhbHVlIGlzIG5vdCBOb25lIGVsc2UgIi0iLCBkZXRhaWwpKQoKICAgIGRhdGFbIm9ic2VydmF0aW9ucyJdID0gb2JzZXJ2YXRpb25zCiAgICBkYXRhWyJ1cGRhdGVkX2F0Il0gPSBpc28KICAgIGRhdGFbInVwZGF0ZWRfYXRfbG9jYWwiXSA9IHN0YW1wCiAgICBkYXRhWyJ1cGRhdGVkX2J5Il0gPSAoImFjdHVhbGl6YXItc2VndWlkb3Jlcy5weSAob2JzZXJ2YWNpw7NuIGV4dGVybmEgIgogICAgICAgICAgICAgICAgICAgICAgICAgICJhdXRvbcOhdGljYSkiKQoKICAgIHdpdGggb3Blbihqc29uX3BhdGgsICJ3IiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZjoKICAgICAgICBqc29uLmR1bXAoZGF0YSwgZiwgZW5zdXJlX2FzY2lpPUZhbHNlLCBpbmRlbnQ9MikKICAgICAgICBmLndyaXRlKCJcbiIpCgogICAgcmVwb3J0ID0gWyJFamVjdWNpw7NuOiB7fSIuZm9ybWF0KHN0YW1wKSwKICAgICAgICAgICAgICAiQ2FtYmlvczoge30iLmZvcm1hdCgKICAgICAgICAgICAgICAgICAgIjsgIi5qb2luKGNoYW5nZXMpIGlmIGNoYW5nZXMgZWxzZSAibmluZ3VubyIpLAogICAgICAgICAgICAgICIiXQogICAgZm9yIG8gaW4gb2JzZXJ2YXRpb25zOgogICAgICAgIHJlcG9ydC5hcHBlbmQoIi0gW3t9XSB7fToge30iLmZvcm1hdCgKICAgICAgICAgICAgb1sic3RhdHVzIl0sIG9bIm5ldHdvcmsiXSwgb1siZGV0YWlsIl0pKQogICAgd2l0aCBvcGVuKGxvZ19wYXRoLCAidyIsIGVuY29kaW5nPSJ1dGYtOCIpIGFzIGY6CiAgICAgICAgZi53cml0ZSgiXG4iLmpvaW4ocmVwb3J0KSArICJcbiIpCgogICAgbG9nKCJDYW1iaW9zOiB7fSIuZm9ybWF0KAogICAgICAgICI7ICIuam9pbihjaGFuZ2VzKSBpZiBjaGFuZ2VzIGVsc2UgIm5pbmd1bm8iKSkKCiAgICBpZiBub3QgcHVzaDoKICAgICAgICBsb2coIk1vZG8gLS1uby1wdXNoOiBKU09OIGxvY2FsIGFjdHVhbGl6YWRvLCBzaW4gc3ViaXIgYSBHaXRIdWIuIikKICAgICAgICByZXR1cm4gMAoKICAgIGlmIG5vdCBjaGFuZ2VzOgogICAgICAgIGxvZygiU2luIGNhbWJpb3MgcmVhbGVzOiBubyBzZSBzdWJlIG5hZGEgYSBHaXRIdWIuIikKICAgICAgICByZXR1cm4gMAoKICAgIHdpdGggb3Blbihqc29uX3BhdGgsIGVuY29kaW5nPSJ1dGYtOCIpIGFzIGY6CiAgICAgICAgY29udGVudCA9IGYucmVhZCgpCiAgICBfLCBzaGEgPSBnaXRodWJfcmVhZF9maWxlKEpTT05fUkVMKQogICAgbXNnID0gKCJBY3R1YWxpemEgY29udGFkb3JlcyBkZSBzZWd1aWRvcmVzIHBvciBvYnNlcnZhY2nDs24gZXh0ZXJuYSAiCiAgICAgICAgICAgIih7fSk6IHt9Ii5mb3JtYXQoc3RhbXAsICI7ICIuam9pbihjaGFuZ2VzKSkpCiAgICBvaywgb3V0ID0gZ2l0aHViX3dyaXRlX2ZpbGUoSlNPTl9SRUwsIGNvbnRlbnQsIG1zZywgc2hhKQogICAgaWYgb2s6CiAgICAgICAgbG9nKCJTdWJpZG8gYSBHaXRIdWIgKG1haW4pOiB7fSIuZm9ybWF0KEpTT05fUkVMKSkKICAgICAgICByZXR1cm4gMAogICAgbG9nKCJFUlJPUiBhbCBzdWJpciBhIEdpdEh1Yjoge30iLmZvcm1hdChvdXQpKQogICAgcmV0dXJuIDEKCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgc3lzLmV4aXQobWFpbigpKQo=
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+actualizar-seguidores.py — Observador automático de seguidores de JEMAF.
+
+Visita las páginas públicas de las redes de la Iglesia Jesucristo es Mi
+Amigo Fiel (JEMAF) por fuera, observa cuántos seguidores tiene cada una y
+actualiza assets/social-stats.json, la fuente de verdad que lee la página
+(js/main.js). Solo se sube el cambio a GitHub cuando hay cifras nuevas
+reales. Nunca se inventan cifras: si una página bloquea la visita o no
+trae el contador, se registra como bloqueada/no observable y se conserva
+el último valor conocido.
+
+Uso:
+    python3 actualizar-seguidores.py [--repo DIR] [--no-push]
+
+  --repo DIR   Directorio local del repositorio (por defecto, el de este
+               script: ~/workspace/pagina-iglesia/repo-v13).
+  --no-push    Solo actualiza el JSON local y el registro; no sube a GitHub.
+
+Fuentes:
+  - YouTube (Javier y Marnie): API pública de SocialCounts (sin clave).
+  - TikTok @profetajavierbelliard: página pública, datos del autor.
+  - X @Prophetjavier: página pública, datos incrustados del perfil.
+  - Instagram, Facebook y Threads: se intentan, pero hoy sus páginas
+    públicas no entregan el contador a una visita automática (Instagram y
+    Threads no lo traen en el HTML; Facebook devuelve HTTP 400). Quedan
+    como referencia hasta que se conecten sus APIs oficiales.
+"""
+
+import base64
+import json
+import os
+import re
+import subprocess
+import sys
+import urllib.request
+from datetime import datetime, timezone
+
+try:
+    from zoneinfo import ZoneInfo
+except Exception:  # pragma: no cover
+    ZoneInfo = None
+
+REPO_DEFAULT = os.path.join(os.path.expanduser("~"), "workspace",
+                            "pagina-iglesia", "repo-v13")
+JSON_REL = os.path.join("assets", "social-stats.json")
+LOG_NAME = "ultima-ejecucion.log"
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
+TIMEOUT = 20
+OWNER = "jeison120918-design"
+REPO = "PAGINA_IGLESIA"
+GITHUB_CLI = "/opt/hatch/bin/github"
+
+# Canales y perfiles que se observan.
+TARGETS = [
+    {"key": "pastorJavier.youtube", "kind": "youtube",
+     "channel_id": "UCrrGRL_XdPleFjWNAa0-Dhg",
+     "label": "YouTube @Profetajavierbelliard"},
+    {"key": "pastoraMarnie.youtube", "kind": "youtube",
+     "channel_id": "UCv4mZWLz5ZBHLEkT3ycC9fA",
+     "label": "YouTube @profetaMarnieBelliard"},
+    {"key": "pastorJavier.tiktok", "kind": "tiktok",
+     "username": "profetajavierbelliard",
+     "label": "TikTok @profetajavierbelliard"},
+    {"key": "pastorJavier.x", "kind": "x",
+     "username": "Prophetjavier",
+     "label": "X @Prophetjavier"},
+    {"key": "pastorJavier.instagram", "kind": "instagram",
+     "username": "profetajavierbelliard",
+     "label": "Instagram @profetajavierbelliard"},
+    {"key": "pastoraMarnie.instagram", "kind": "instagram",
+     "username": "marnie_disla_belliard",
+     "label": "Instagram @marnie_disla_belliard"},
+    {"key": "pastorJavier.facebook", "kind": "facebook",
+     "username": "profetajavieroficial",
+     "label": "Facebook profetajavieroficial"},
+    {"key": "iglesia.facebook", "kind": "facebook",
+     "username": "jesucristoesmiamigofiel1",
+     "label": "Facebook jesucristoesmiamigofiel1"},
+    {"key": "pastorJavier.threads", "kind": "threads",
+     "username": "profetajavierbelliard",
+     "label": "Threads @profetajavierbelliard"},
+]
+
+SOCIALCOUNTS = ("https://api.socialcounts.org/"
+                "youtube-live-subscriber-count/{}")
+
+
+def log(msg):
+    print(msg, flush=True)
+
+
+def fetch_text(url):
+    """Devuelve (http_status, texto) de una página pública."""
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    try:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            return resp.status, resp.read().decode("utf-8", "ignore")
+    except urllib.error.HTTPError as e:
+        return e.code, ""
+    except Exception as e:  # timeout, DNS, etc.
+        return 0, str(e)
+
+
+def fetch_json(url):
+    status, text = fetch_text(url)
+    if status != 200 or not text:
+        return None, status
+    try:
+        return json.loads(text), status
+    except Exception:
+        return None, status
+
+
+def observe_youtube(t):
+    data, status = fetch_json(SOCIALCOUNTS.format(t["channel_id"]))
+    if not data or "counters" not in data:
+        return None, "bloqueado", \
+            "SocialCounts HTTP {} o sin datos".format(status)
+    counters = data["counters"]
+    est = counters.get("estimation") or {}
+    api = counters.get("api") or {}
+    subs = est.get("subscriberCount") or api.get("subscriberCount")
+    videos = est.get("videoCount") or api.get("videoCount")
+    if not isinstance(subs, int):
+        return None, "bloqueado", "SocialCounts sin subscriberCount"
+    extra = {"ytVideos": videos} if isinstance(videos, int) else {}
+    return subs, "observado", \
+        "SocialCounts: {} suscriptores, {} videos".format(subs, videos), extra
+
+
+def observe_tiktok(t):
+    url = "https://www.tiktok.com/@{}".format(t["username"])
+    status, html = fetch_text(url)
+    if status != 200 or not html:
+        return None, "bloqueado", "TikTok HTTP {}".format(status)
+    idx = html.find('"uniqueId":"{}"'.format(t["username"]))
+    if idx < 0:
+        return None, "no_observable", \
+            "TikTok: no se encontró el perfil en la página"
+    seg = html[idx:idx + 4000]
+    m = re.search(r'"followerCount":\s*"?(\d+)"?', seg)
+    if not m:
+        return None, "no_observable", \
+            "TikTok: sin followerCount en los datos del autor"
+    return int(m.group(1)), "observado", \
+        "Página pública: followerCount {} en los datos del autor".format(
+            m.group(1))
+
+
+def observe_x(t):
+    url = "https://x.com/{}".format(t["username"])
+    status, html = fetch_text(url)
+    if status != 200 or not html:
+        return None, "bloqueado", "X HTTP {}".format(status)
+    m = re.search(r'"relationship_counts":\s*\{\s*"followers":\s*(\d+)',
+                  html.replace('\\"', '"'))
+    if not m:
+        return None, "no_observable", \
+            "X: sin relationship_counts en la página"
+    return int(m.group(1)), "observado", \
+        "Página pública: relationship_counts.followers {}".format(m.group(1))
+
+
+def observe_instagram(t):
+    url = "https://www.instagram.com/{}/".format(t["username"])
+    status, html = fetch_text(url)
+    if status != 200 or not html:
+        return None, "bloqueado", "Instagram HTTP {}".format(status)
+    if re.search(r'edge_followed_by.{0,80}"count":\s*(\d+)', html):
+        n = int(re.search(
+            r'edge_followed_by.{0,80}"count":\s*(\d+)', html).group(1))
+        return n, "observado", "Página pública: edge_followed_by {}".format(n)
+    return None, "no_observable", \
+        ("La página pública carga (HTTP 200) pero su HTML no trae el "
+         "contador de seguidores; Instagram lo sirve solo con "
+         "JavaScript/inicio de sesión.")
+
+
+def observe_facebook(t):
+    url = "https://www.facebook.com/{}/".format(t["username"])
+    status, html = fetch_text(url)
+    if status != 200:
+        return None, "bloqueado", \
+            "Facebook HTTP {} (página de error anti-bots)".format(status)
+    return None, "no_observable", \
+        "Facebook carga pero sin contador legible en el HTML"
+
+
+def observe_threads(t):
+    url = "https://www.threads.net/@{}".format(t["username"])
+    status, html = fetch_text(url)
+    if status != 200 or not html:
+        return None, "bloqueado", "Threads HTTP {}".format(status)
+    m = re.search(r'"follower_count":\s*(\d+)', html)
+    if m:
+        return int(m.group(1)), "observado", \
+            "Página pública: follower_count {}".format(m.group(1))
+    return None, "no_observable", \
+        "La página pública carga (HTTP 200) pero su HTML no trae el contador"
+
+
+OBSERVERS = {
+    "youtube": observe_youtube,
+    "tiktok": observe_tiktok,
+    "x": observe_x,
+    "instagram": observe_instagram,
+    "facebook": observe_facebook,
+    "threads": observe_threads,
+}
+
+
+def get_nested(d, key):
+    cur = d
+    for part in key.split("."):
+        if not isinstance(cur, dict) or part not in cur:
+            return None
+        cur = cur[part]
+    return cur
+
+
+def set_nested(d, key, value):
+    cur = d
+    parts = key.split(".")
+    for part in parts[:-1]:
+        cur = cur.setdefault(part, {})
+    cur[parts[-1]] = value
+
+
+def now_iso():
+    if ZoneInfo:
+        now = datetime.now(ZoneInfo("America/Santo_Domingo"))
+    else:
+        now = datetime.now(timezone.utc)
+    return now
+
+
+def github_read_file(path):
+    """Lee un archivo de GitHub (rama main) vía la CLI del conector."""
+    args = {"owner": OWNER, "repo": REPO, "path": path}
+    r = subprocess.run([GITHUB_CLI, "call-read-tool", "--name",
+                        "get_file_contents", "--arguments-json",
+                        json.dumps(args)], capture_output=True, text=True,
+                       timeout=60)
+    if r.returncode != 0:
+        return None, None
+    try:
+        payload = json.loads(r.stdout)
+        text = payload["result"]["content"][0]["text"]
+        data = json.loads(text)
+        if isinstance(data, dict) and "content" in data:
+            raw = base64.b64decode(data["content"]).decode("utf-8")
+            return raw, data.get("sha")
+        return text, None
+    except Exception:
+        return None, None
+
+
+def github_write_file(path, content, message, sha):
+    """Crea o actualiza un archivo en GitHub (rama main)."""
+    args = {"owner": OWNER, "repo": REPO, "path": path,
+            "content": base64.b64encode(content.encode("utf-8")).decode(),
+            "message": message, "branch": "main"}
+    if sha:
+        args["sha"] = sha
+    r = subprocess.run([GITHUB_CLI, "call-tool", "--name",
+                        "create_or_update_file", "--arguments-json",
+                        json.dumps(args)], capture_output=True, text=True,
+                       timeout=180)
+    return r.returncode == 0, (r.stdout + r.stderr)[-1500:]
+
+
+def main():
+    repo = REPO_DEFAULT
+    push = True
+    argv = sys.argv[1:]
+    i = 0
+    while i < len(argv):
+        if argv[i] == "--repo" and i + 1 < len(argv):
+            repo = argv[i + 1]
+            i += 2
+        elif argv[i] == "--no-push":
+            push = False
+            i += 1
+        else:
+            i += 1
+
+    json_path = os.path.join(repo, JSON_REL)
+    log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           LOG_NAME)
+
+    with open(json_path, encoding="utf-8") as f:
+        data = json.load(f)
+
+    now = now_iso()
+    stamp = now.strftime("%d %b %Y, %H:%M AST")
+    iso = now.isoformat(timespec="seconds")
+
+    changes = []
+    observations = []
+    for t in TARGETS:
+        fn = OBSERVERS[t["kind"]]
+        result = fn(t)
+        value, status, detail = result[0], result[1], result[2]
+        extra = result[3] if len(result) > 3 else {}
+        entry = get_nested(data["stats"], t["key"]) or {}
+        old = entry.get("count")
+        observations.append({
+            "network": t["label"], "status": status, "detail": detail})
+        if status == "observado" and isinstance(value, int):
+            if old != value:
+                changes.append("{}: {} -> {}".format(t["label"], old, value))
+                entry["count"] = value
+                entry["status"] = "observado"
+                if "source" not in entry:
+                    entry["source"] = None
+                set_nested(data["stats"], t["key"], entry)
+            else:
+                entry["status"] = "observado"
+                set_nested(data["stats"], t["key"], entry)
+            # Datos extra (p. ej. total de videos de YouTube).
+            for ek, ev in extra.items():
+                group = t["key"].rsplit(".", 1)[0]
+                e2 = get_nested(data["stats"], group + "." + ek) or {}
+                if e2.get("count") != ev:
+                    changes.append("{}.{}: {} -> {}".format(
+                        group, ek, e2.get("count"), ev))
+                    e2["count"] = ev
+                    e2["status"] = "observado"
+                    set_nested(data["stats"], group + "." + ek, e2)
+        elif status in ("bloqueado", "no_observable"):
+            # Se conserva el último valor conocido; solo se registra.
+            if entry.get("status") in ("observado", "referencia"):
+                pass
+        log("[{}] {} -> {} ({})".format(
+            status, t["label"], value if value is not None else "-", detail))
+
+    data["observations"] = observations
+    data["updated_at"] = iso
+    data["updated_at_local"] = stamp
+    data["updated_by"] = ("actualizar-seguidores.py (observación externa "
+                          "automática)")
+
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+    report = ["Ejecución: {}".format(stamp),
+              "Cambios: {}".format(
+                  "; ".join(changes) if changes else "ninguno"),
+              ""]
+    for o in observations:
+        report.append("- [{}] {}: {}".format(
+            o["status"], o["network"], o["detail"]))
+    with open(log_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(report) + "\n")
+
+    log("Cambios: {}".format(
+        "; ".join(changes) if changes else "ninguno"))
+
+    if not push:
+        log("Modo --no-push: JSON local actualizado, sin subir a GitHub.")
+        return 0
+
+    if not changes:
+        log("Sin cambios reales: no se sube nada a GitHub.")
+        return 0
+
+    with open(json_path, encoding="utf-8") as f:
+        content = f.read()
+    _, sha = github_read_file(JSON_REL)
+    msg = ("Actualiza contadores de seguidores por observación externa "
+           "({}): {}".format(stamp, "; ".join(changes)))
+    ok, out = github_write_file(JSON_REL, content, msg, sha)
+    if ok:
+        log("Subido a GitHub (main): {}".format(JSON_REL))
+        return 0
+    log("ERROR al subir a GitHub: {}".format(out))
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
