@@ -1,1 +1,144 @@
-ewogICJkZXNjcmlwY2lvbiI6ICJGdWVudGUgZGUgdmVyZGFkIGRlIGxvcyBjb250YWRvcmVzIGRlIHNlZ3VpZG9yZXMgZGUgSkVNQUYuIExhIGdlbmVyYSBlbCBhY3R1YWxpemFkb3IgYXV0b23DoXRpY28gKGFjdHVhbGl6YXItc2VndWlkb3Jlcy5weSksIHF1ZSB2aXNpdGEgbGFzIHDDoWdpbmFzIHDDumJsaWNhcyBwb3IgZnVlcmEgeSBvYnNlcnZhIGxvcyBzZWd1aWRvcmVzLiBMYSBww6FnaW5hIChqcy9tYWluLmpzKSBsZWUgZXN0ZSBhcmNoaXZvIGFsIGNhcmdhciB5IGFjdHVhbGl6YSB0b2RvcyBsb3MgY29udGFkb3JlcyBkZWwgc2l0aW8uIExvcyB2YWxvcmVzIGNvbiBzdGF0dXMgJ3JlZmVyZW5jaWEnIG5vIHNlIHB1ZGllcm9uIG9ic2VydmFyIGVuIHZpdm8geSBzZSBjb25zZXJ2YW4gY29tbyDDumx0aW1vIHZhbG9yIGNvbm9jaWRvOyBudW5jYSBzZSBpbnZlbnRhbiBjaWZyYXMuIiwKICAib2JzZXJ2YXRpb25zIjogWwogICAgewogICAgICAibmV0d29yayI6ICJZb3VUdWJlIEBQcm9mZXRhamF2aWVyYmVsbGlhcmQiLAogICAgICAic3RhdHVzIjogIm9ic2VydmFkbyIsCiAgICAgICJkZXRhaWwiOiAiU29jaWFsQ291bnRzOiAyNTA0MDQgc3VzY3JpcHRvcmVzLCAxNTQwIHZpZGVvcyIKICAgIH0sCiAgICB7CiAgICAgICJuZXR3b3JrIjogIllvdVR1YmUgQHByb2ZldGFNYXJuaWVCZWxsaWFyZCIsCiAgICAgICJzdGF0dXMiOiAib2JzZXJ2YWRvIiwKICAgICAgImRldGFpbCI6ICJTb2NpYWxDb3VudHM6IDg3MSBzdXNjcmlwdG9yZXMsIDEzIHZpZGVvcyIKICAgIH0sCiAgICB7CiAgICAgICJuZXR3b3JrIjogIlRpa1RvayBAcHJvZmV0YWphdmllcmJlbGxpYXJkIiwKICAgICAgInN0YXR1cyI6ICJvYnNlcnZhZG8iLAogICAgICAiZGV0YWlsIjogIlDDoWdpbmEgcMO6YmxpY2E6IGZvbGxvd2VyQ291bnQgNDM0MzAwIGVuIGxvcyBkYXRvcyBkZWwgYXV0b3IiCiAgICB9LAogICAgewogICAgICAibmV0d29yayI6ICJYIEBQcm9waGV0amF2aWVyIiwKICAgICAgInN0YXR1cyI6ICJvYnNlcnZhZG8iLAogICAgICAiZGV0YWlsIjogIlDDoWdpbmEgcMO6YmxpY2E6IHJlbGF0aW9uc2hpcF9jb3VudHMuZm9sbG93ZXJzIDQ4IgogICAgfSwKICAgIHsKICAgICAgIm5ldHdvcmsiOiAiSW5zdGFncmFtIEBwcm9mZXRhamF2aWVyYmVsbGlhcmQiLAogICAgICAic3RhdHVzIjogIm5vX29ic2VydmFibGUiLAogICAgICAiZGV0YWlsIjogIkxhIHDDoWdpbmEgcMO6YmxpY2EgY2FyZ2EgKEhUVFAgMjAwKSBwZXJvIHN1IEhUTUwgbm8gdHJhZSBlbCBjb250YWRvciBkZSBzZWd1aWRvcmVzOyBJbnN0YWdyYW0gbG8gc2lydmUgc29sbyBjb24gSmF2YVNjcmlwdC9pbmljaW8gZGUgc2VzacOzbi4iCiAgICB9LAogICAgewogICAgICAibmV0d29yayI6ICJJbnN0YWdyYW0gQG1hcm5pZV9kaXNsYV9iZWxsaWFyZCIsCiAgICAgICJzdGF0dXMiOiAibm9fb2JzZXJ2YWJsZSIsCiAgICAgICJkZXRhaWwiOiAiTGEgcMOhZ2luYSBww7pibGljYSBjYXJnYSAoSFRUUCAyMDApIHBlcm8gc3UgSFRNTCBubyB0cmFlIGVsIGNvbnRhZG9yIGRlIHNlZ3VpZG9yZXM7IEluc3RhZ3JhbSBsbyBzaXJ2ZSBzb2xvIGNvbiBKYXZhU2NyaXB0L2luaWNpbyBkZSBzZXNpw7NuLiIKICAgIH0sCiAgICB7CiAgICAgICJuZXR3b3JrIjogIkZhY2Vib29rIHByb2ZldGFqYXZpZXJvZmljaWFsIiwKICAgICAgInN0YXR1cyI6ICJibG9xdWVhZG8iLAogICAgICAiZGV0YWlsIjogIkZhY2Vib29rIEhUVFAgNDAwIChww6FnaW5hIGRlIGVycm9yIGFudGktYm90cykiCiAgICB9LAogICAgewogICAgICAibmV0d29yayI6ICJGYWNlYm9vayBqZXN1Y3Jpc3RvZXNtaWFtaWdvZmllbDEiLAogICAgICAic3RhdHVzIjogImJsb3F1ZWFkbyIsCiAgICAgICJkZXRhaWwiOiAiRmFjZWJvb2sgSFRUUCA0MDAgKHDDoWdpbmEgZGUgZXJyb3IgYW50aS1ib3RzKSIKICAgIH0sCiAgICB7CiAgICAgICJuZXR3b3JrIjogIlRocmVhZHMgQHByb2ZldGFqYXZpZXJiZWxsaWFyZCIsCiAgICAgICJzdGF0dXMiOiAibm9fb2JzZXJ2YWJsZSIsCiAgICAgICJkZXRhaWwiOiAiTGEgcMOhZ2luYSBww7pibGljYSBjYXJnYSAoSFRUUCAyMDApIHBlcm8gc3UgSFRNTCBubyB0cmFlIGVsIGNvbnRhZG9yIgogICAgfQogIF0sCiAgInN0YXRzIjogewogICAgImlnbGVzaWEiOiB7CiAgICAgICJmYWNlYm9vayI6IHsKICAgICAgICAiY291bnQiOiAyMDAwMDAsCiAgICAgICAgImxhYmVsIjogIkZhY2Vib29rIElnbGVzaWEiLAogICAgICAgICJzb3VyY2UiOiAiaHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL2plc3VjcmlzdG9lc21pYW1pZ29maWVsMS8iLAogICAgICAgICJzdGF0dXMiOiAicmVmZXJlbmNpYSIKICAgICAgfSwKICAgICAgInB1YmxpY2FjaW9uZXMiOiB7CiAgICAgICAgImNvdW50IjogNDYwMCwKICAgICAgICAibGFiZWwiOiAiUHVibGljYWNpb25lcyIsCiAgICAgICAgInNvdXJjZSI6IG51bGwsCiAgICAgICAgInN0YXR1cyI6ICJyZWZlcmVuY2lhIgogICAgICB9CiAgICB9LAogICAgInBhc3RvckphdmllciI6IHsKICAgICAgImZhY2Vib29rIjogewogICAgICAgICJjb3VudCI6IDI0MDAwMDAsCiAgICAgICAgImxhYmVsIjogIkZhY2Vib29rIiwKICAgICAgICAic291cmNlIjogImh0dHBzOi8vd3d3LmZhY2Vib29rLmNvbS9wcm9mZXRhamF2aWVyb2ZpY2lhbC8iLAogICAgICAgICJzdGF0dXMiOiAicmVmZXJlbmNpYSIKICAgICAgfSwKICAgICAgImlnU2lndWllbmRvIjogewogICAgICAgICJjb3VudCI6IDIzLAogICAgICAgICJsYWJlbCI6ICJTZWd1aWRvcyBJbnN0YWdyYW0iLAogICAgICAgICJzb3VyY2UiOiBudWxsLAogICAgICAgICJzdGF0dXMiOiAicmVmZXJlbmNpYSIKICAgICAgfSwKICAgICAgImluc3RhZ3JhbSI6IHsKICAgICAgICAiY291bnQiOiBudWxsLAogICAgICAgICJsYWJlbCI6ICJJbnN0YWdyYW0iLAogICAgICAgICJzb3VyY2UiOiAiaHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9wcm9mZXRhamF2aWVyYmVsbGlhcmQvIiwKICAgICAgICAic3RhdHVzIjogIm5vX29ic2VydmFibGUiCiAgICAgIH0sCiAgICAgICJ0aHJlYWRzIjogewogICAgICAgICJjb3VudCI6IG51bGwsCiAgICAgICAgImxhYmVsIjogIlRocmVhZHMiLAogICAgICAgICJzb3VyY2UiOiAiaHR0cHM6Ly93d3cudGhyZWFkcy5uZXQvQHByb2ZldGFqYXZpZXJiZWxsaWFyZCIsCiAgICAgICAgInN0YXR1cyI6ICJub19vYnNlcnZhYmxlIgogICAgICB9LAogICAgICAidGlrdG9rIjogewogICAgICAgICJjb3VudCI6IDQzNDMwMCwKICAgICAgICAibGFiZWwiOiAiVGlrVG9rIiwKICAgICAgICAic291cmNlIjogImh0dHBzOi8vd3d3LnRpa3Rvay5jb20vQHByb2ZldGFqYXZpZXJiZWxsaWFyZCIsCiAgICAgICAgInN0YXR1cyI6ICJvYnNlcnZhZG8iCiAgICAgIH0sCiAgICAgICJ4IjogewogICAgICAgICJjb3VudCI6IDQ4LAogICAgICAgICJsYWJlbCI6ICJYIiwKICAgICAgICAic291cmNlIjogImh0dHBzOi8veC5jb20vUHJvcGhldGphdmllciIsCiAgICAgICAgInN0YXR1cyI6ICJvYnNlcnZhZG8iCiAgICAgIH0sCiAgICAgICJ5b3V0dWJlIjogewogICAgICAgICJjb3VudCI6IDI1MDQwNCwKICAgICAgICAibGFiZWwiOiAiWW91VHViZSIsCiAgICAgICAgInNvdXJjZSI6ICJodHRwczovL2FwaS5zb2NpYWxjb3VudHMub3JnL3lvdXR1YmUtbGl2ZS1zdWJzY3JpYmVyLWNvdW50L1VDcnJHUkxfWGRQbGVGaldOQWEwLURoZyIsCiAgICAgICAgInN0YXR1cyI6ICJvYnNlcnZhZG8iCiAgICAgIH0sCiAgICAgICJ5dFZpZGVvcyI6IHsKICAgICAgICAiY291bnQiOiAxNTQwLAogICAgICAgICJsYWJlbCI6ICJWaWRlb3MgWW91VHViZSIsCiAgICAgICAgInNvdXJjZSI6ICJodHRwczovL2FwaS5zb2NpYWxjb3VudHMub3JnL3lvdXR1YmUtbGl2ZS1zdWJzY3JpYmVyLWNvdW50L1VDcnJHUkxfWGRQbGVGaldOQWEwLURoZyIsCiAgICAgICAgInN0YXR1cyI6ICJvYnNlcnZhZG8iCiAgICAgIH0KICAgIH0sCiAgICAicGFzdG9yYU1hcm5pZSI6IHsKICAgICAgImZhY2Vib29rIjogewogICAgICAgICJjb3VudCI6IDc1ODUsCiAgICAgICAgImxhYmVsIjogIkZhY2Vib29rIiwKICAgICAgICAic291cmNlIjogImh0dHBzOi8vd3d3LmZhY2Vib29rLmNvbS8xbGFyaXR6YS8iLAogICAgICAgICJzdGF0dXMiOiAicmVmZXJlbmNpYSIKICAgICAgfSwKICAgICAgImluc3RhZ3JhbSI6IHsKICAgICAgICAiY291bnQiOiAxMjE0LAogICAgICAgICJsYWJlbCI6ICJJbnN0YWdyYW0iLAogICAgICAgICJzb3VyY2UiOiAiaHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9tYXJuaWVfZGlzbGFfYmVsbGlhcmQvIiwKICAgICAgICAic3RhdHVzIjogInJlZmVyZW5jaWEiCiAgICAgIH0sCiAgICAgICJ5b3V0dWJlIjogewogICAgICAgICJjb3VudCI6IDg3MSwKICAgICAgICAibGFiZWwiOiAiWW91VHViZSIsCiAgICAgICAgInNvdXJjZSI6ICJodHRwczovL2FwaS5zb2NpYWxjb3VudHMub3JnL3lvdXR1YmUtbGl2ZS1zdWJzY3JpYmVyLWNvdW50L1VDdjRtWldMejVaQkhMRWtUM3ljQzlmQSIsCiAgICAgICAgInN0YXR1cyI6ICJvYnNlcnZhZG8iCiAgICAgIH0sCiAgICAgICJ5dFZpZGVvcyI6IHsKICAgICAgICAiY291bnQiOiAxMywKICAgICAgICAic3RhdHVzIjogIm9ic2VydmFkbyIKICAgICAgfQogICAgfQogIH0sCiAgInVwZGF0ZWRfYXQiOiAiMjAyNi0xMS0xOVQxNTo1MjoxOC0wNDowMCIsCiAgInVwZGF0ZWRfYXRfbG9jYWwiOiAiMTkgTm92IDIwMjYsIDE1OjUyIEFTVCIsCiAgInVwZGF0ZWRfYnkiOiAiYWN0dWFsaXphci1zZWd1aWRvcmVzLnB5IChvYnNlcnZhY2nDs24gZXh0ZXJuYSBhdXRvbcOhdGljYSkiLAogICJ2ZXJzaW9uIjogMQp9Cg==
+{
+  "descripcion": "Fuente de verdad de los contadores de seguidores de JEMAF. La genera el actualizador automático (actualizar-seguidores.py), que visita las páginas públicas por fuera y observa los seguidores. La página (js/main.js) lee este archivo al cargar y actualiza todos los contadores del sitio. Los valores con status 'referencia' no se pudieron observar en vivo y se conservan como último valor conocido; nunca se inventan cifras.",
+  "observations": [
+    {
+      "network": "YouTube @Profetajavierbelliard",
+      "status": "observado",
+      "detail": "SocialCounts: 250404 suscriptores, 1540 videos"
+    },
+    {
+      "network": "YouTube @profetaMarnieBelliard",
+      "status": "observado",
+      "detail": "SocialCounts: 871 suscriptores, 13 videos"
+    },
+    {
+      "network": "TikTok @profetajavierbelliard",
+      "status": "observado",
+      "detail": "Página pública: followerCount 434300 en los datos del autor"
+    },
+    {
+      "network": "X @Prophetjavier",
+      "status": "observado",
+      "detail": "Página pública: relationship_counts.followers 48"
+    },
+    {
+      "network": "Instagram @profetajavierbelliard",
+      "status": "no_observable",
+      "detail": "La página pública carga (HTTP 200) pero su HTML no trae el contador de seguidores; Instagram lo sirve solo con JavaScript/inicio de sesión."
+    },
+    {
+      "network": "Instagram @marnie_disla_belliard",
+      "status": "no_observable",
+      "detail": "La página pública carga (HTTP 200) pero su HTML no trae el contador de seguidores; Instagram lo sirve solo con JavaScript/inicio de sesión."
+    },
+    {
+      "network": "Facebook profetajavieroficial",
+      "status": "bloqueado",
+      "detail": "Facebook HTTP 400 (página de error anti-bots)"
+    },
+    {
+      "network": "Facebook jesucristoesmiamigofiel1",
+      "status": "bloqueado",
+      "detail": "Facebook HTTP 400 (página de error anti-bots)"
+    },
+    {
+      "network": "Threads @profetajavierbelliard",
+      "status": "no_observable",
+      "detail": "La página pública carga (HTTP 200) pero su HTML no trae el contador"
+    }
+  ],
+  "stats": {
+    "iglesia": {
+      "facebook": {
+        "count": 200000,
+        "label": "Facebook Iglesia",
+        "source": "https://www.facebook.com/jesucristoesmiamigofiel1/",
+        "status": "referencia"
+      },
+      "publicaciones": {
+        "count": 4600,
+        "label": "Publicaciones",
+        "source": null,
+        "status": "referencia"
+      }
+    },
+    "pastorJavier": {
+      "facebook": {
+        "count": 2400000,
+        "label": "Facebook",
+        "source": "https://www.facebook.com/profetajavieroficial/",
+        "status": "referencia"
+      },
+      "igSiguiendo": {
+        "count": 23,
+        "label": "Seguidos Instagram",
+        "source": null,
+        "status": "referencia"
+      },
+      "instagram": {
+        "count": null,
+        "label": "Instagram",
+        "source": "https://www.instagram.com/profetajavierbelliard/",
+        "status": "no_observable"
+      },
+      "threads": {
+        "count": null,
+        "label": "Threads",
+        "source": "https://www.threads.net/@profetajavierbelliard",
+        "status": "no_observable"
+      },
+      "tiktok": {
+        "count": 434300,
+        "label": "TikTok",
+        "source": "https://www.tiktok.com/@profetajavierbelliard",
+        "status": "observado"
+      },
+      "x": {
+        "count": 48,
+        "label": "X",
+        "source": "https://x.com/Prophetjavier",
+        "status": "observado"
+      },
+      "youtube": {
+        "count": 250404,
+        "label": "YouTube",
+        "source": "https://api.socialcounts.org/youtube-live-subscriber-count/UCrrGRL_XdPleFjWNAa0-Dhg",
+        "status": "observado"
+      },
+      "ytVideos": {
+        "count": 1540,
+        "label": "Videos YouTube",
+        "source": "https://api.socialcounts.org/youtube-live-subscriber-count/UCrrGRL_XdPleFjWNAa0-Dhg",
+        "status": "observado"
+      }
+    },
+    "pastoraMarnie": {
+      "facebook": {
+        "count": 7585,
+        "label": "Facebook",
+        "source": "https://www.facebook.com/1laritza/",
+        "status": "referencia"
+      },
+      "instagram": {
+        "count": 1214,
+        "label": "Instagram",
+        "source": "https://www.instagram.com/marnie_disla_belliard/",
+        "status": "referencia"
+      },
+      "youtube": {
+        "count": 871,
+        "label": "YouTube",
+        "source": "https://api.socialcounts.org/youtube-live-subscriber-count/UCv4mZWLz5ZBHLEkT3ycC9fA",
+        "status": "observado"
+      },
+      "ytVideos": {
+        "count": 13,
+        "status": "observado"
+      }
+    }
+  },
+  "updated_at": "2026-11-19T15:52:18-04:00",
+  "updated_at_local": "19 Nov 2026, 15:52 AST",
+  "updated_by": "actualizar-seguidores.py (observación externa automática)",
+  "version": 1
+}
