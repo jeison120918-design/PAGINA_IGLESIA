@@ -46,6 +46,11 @@
 <link rel="preconnect" href="https://www.youtube.com" crossorigin />
 <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin />
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
+<link rel="dns-prefetch" href="https://api.rss2json.com" />
+<link rel="preconnect" href="https://api.rss2json.com" crossorigin />
+<link rel="dns-prefetch" href="https://api.socialcounts.org" />
+<link rel="preconnect" href="https://api.socialcounts.org" crossorigin />
+<link rel="dns-prefetch" href="https://api.allorigins.win" />
 
 <!-- Permissions Policy: habilitar fullscreen, autoplay, picture-in-picture -->
 <meta http-equiv="Permissions-Policy" content="fullscreen=*, autoplay=*, picture-in-picture=*, encrypted-media=*" />
@@ -175,7 +180,7 @@
         <span><i class="fab fa-youtube" aria-hidden="true"></i> Suscriptores YouTube</span>
       </div>
     </div>
-    <p class="hero-stats-note">Cifras públicas de las redes oficiales del Pastor Javier Belliard, cabeza de JEMAF. Todos los contadores del sitio se sincronizan automáticamente desde una única fuente de datos.</p>
+    <p class="hero-stats-note" id="heroStatsNote">Cifras públicas de las redes oficiales del Pastor Javier Belliard, cabeza de JEMAF. Los suscriptores de YouTube se actualizan en vivo desde el canal; las cifras de Instagram, TikTok y Facebook son de referencia y se actualizan manualmente.</p>
   </div>
   <a href="#nosotros" class="scroll-down" aria-label="Ir a la siguiente sección"><i class="fas fa-chevron-down" aria-hidden="true"></i></a>
 </section>
@@ -511,6 +516,17 @@
       <span class="eyebrow">Contenido en Vivo</span>
       <h2 class="section-title">Síguenos en <span class="gold">redes sociales</span></h2>
       <p class="section-lead">Todo nuestro contenido se actualiza automáticamente. Conéctate y comparte la palabra.</p>
+      <p class="live-updated" id="liveUpdated" role="status" aria-live="polite"><i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i> Actualizando contenido en vivo…</p>
+    </div>
+
+    <!-- Banner de transmisión en vivo (solo aparece cuando hay una activa) -->
+    <div class="live-banner" id="liveBanner" hidden>
+      <span class="live-banner-dot" aria-hidden="true"></span>
+      <div class="live-banner-body">
+        <strong>EN VIVO AHORA</strong>
+        <span id="liveBannerTitle">Transmisión en vivo del Pastor Javier Belliard</span>
+      </div>
+      <a href="https://www.youtube.com/@Profetajavierbelliard/streams" target="_blank" rel="noopener noreferrer" class="btn btn-gold live-banner-btn" id="liveBannerBtn"><i class="fas fa-play" aria-hidden="true"></i> Ver en vivo</a>
     </div>
 
     <!-- Tabs -->
@@ -554,6 +570,12 @@
 
       <!-- Grid de videos recientes (se rellena dinámicamente con JS) -->
       <h3 class="sub-heading-light" data-aos="fade-up">Videos recientes</h3>
+      <div class="yt-filters" role="group" aria-label="Filtrar videos de YouTube" data-aos="fade-up">
+        <button type="button" class="yt-filter-btn active" data-filter="all" aria-pressed="true">Todos</button>
+        <button type="button" class="yt-filter-btn" data-filter="video" aria-pressed="false">Videos</button>
+        <button type="button" class="yt-filter-btn" data-filter="short" aria-pressed="false">Shorts</button>
+        <button type="button" class="yt-filter-btn" data-filter="live" aria-pressed="false"><span class="yt-filter-dot" aria-hidden="true"></span> En vivo</button>
+      </div>
       <div class="yt-grid" id="ytGrid" data-aos="fade-up">
         <a href="https://www.youtube.com/watch?v=GABC2WCzC20" target="_blank" rel="noopener noreferrer" class="yt-card-video" data-vid="GABC2WCzC20">
           <div class="yt-thumb"><img src="https://i.ytimg.com/vi/GABC2WCzC20/hqdefault.jpg" alt="No naciste para volver atrás" loading="lazy" width="480" height="360"/><span class="yt-play" aria-hidden="true"><i class="fas fa-play"></i></span></div>
