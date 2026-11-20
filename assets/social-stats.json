@@ -4,7 +4,7 @@
     {
       "network": "YouTube @Profetajavierbelliard",
       "status": "observado",
-      "detail": "SocialCounts: 250414 suscriptores, 1541 videos"
+      "detail": "SocialCounts: 250415 suscriptores, 1541 videos"
     },
     {
       "network": "YouTube @profetaMarnieBelliard",
@@ -14,7 +14,7 @@
     {
       "network": "TikTok @profetajavierbelliard",
       "status": "observado",
-      "detail": "Página pública: followerCount 434700 en los datos del autor"
+      "detail": "Página pública: followerCount 434800 en los datos del autor"
     },
     {
       "network": "X @Prophetjavier",
@@ -88,7 +88,7 @@
         "status": "no_observable"
       },
       "tiktok": {
-        "count": 434700,
+        "count": 434800,
         "label": "TikTok",
         "source": "https://www.tiktok.com/@profetajavierbelliard",
         "status": "observado"
@@ -100,7 +100,7 @@
         "status": "observado"
       },
       "youtube": {
-        "count": 250414,
+        "count": 250415,
         "label": "YouTube",
         "source": "https://api.socialcounts.org/youtube-live-subscriber-count/UCrrGRL_XdPleFjWNAa0-Dhg",
         "status": "observado"
@@ -137,8 +137,8 @@
       }
     }
   },
-  "updated_at": "2026-11-20T07:28:34-04:00",
-  "updated_at_local": "20 Nov 2026, 07:28 AST",
+  "updated_at": "2026-11-20T09:16:29-04:00",
+  "updated_at_local": "20 Nov 2026, 09:16 AST",
   "updated_by": "actualizar-seguidores.py (observación externa automática)",
   "version": 1
 }
